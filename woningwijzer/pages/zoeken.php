@@ -49,7 +49,7 @@ $woningen = $stmt->fetchAll();
 
     <!-- Filterformulier -->
     <form method="GET" action="zoeken.php"
-          class="bg-white rounded-xl border border-gray-100 p-4 mb-8 flex flex-col sm:flex-row flex-wrap gap-3 items-end">
+          class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-4 mb-8 flex flex-col sm:flex-row flex-wrap gap-3 items-end">
 
         <!-- Type -->
         <div class="flex flex-col gap-1 w-full sm:flex-1 sm:min-w-[130px]">
@@ -142,7 +142,7 @@ $woningen = $stmt->fetchAll();
         <!-- Grid-weergave -->
         <div id="view-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <?php foreach ($woningen as $w): ?>
-                <div class="bg-white rounded-xl border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
+                <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-md transition-shadow">
 
                     <div class="bg-gray-100 h-36 flex items-center justify-center text-4xl">
                         <?= $w['type'] === 'kamer' ? '🛏️' : ($w['type'] === 'studio' ? '🪟' : ($w['categorie'] === 'koop' ? '🏡' : '🏢')) ?>

@@ -1,5 +1,5 @@
 <!-- Footer -->
-    <footer class="bg-ink2 text-white/65 mt-auto">
+    <footer class="bg-ink2 dark:bg-gray-900 text-white/65 mt-auto">
         <div class="max-w-6xl mx-auto px-4 py-12">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
 

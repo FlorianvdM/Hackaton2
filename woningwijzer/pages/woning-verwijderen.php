@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $id > 0) {
             </a>
         </div>
     <?php else: ?>
-        <div class="bg-white rounded-xl border border-gray-100 p-6 text-center">
+        <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-6 text-center">
             <div class="text-5xl mb-4">⚠️</div>
             <h1 class="font-display text-2xl font-bold mb-2">Weet je het zeker?</h1>
             <p class="text-gedempt mb-6">Je staat op het punt woning <strong>#<?= $id ?></strong> te verwijderen. Dit kan niet ongedaan worden gemaakt.</p>

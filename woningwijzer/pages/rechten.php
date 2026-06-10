@@ -88,7 +88,7 @@ $vragen = [
     <!-- Rechtenkaarten grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
         <?php foreach ($rechten as $r): ?>
-            <div class="bg-white rounded-xl border-l-4 border-l-oranje border border-gray-100 p-5">
+            <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border-l-4 border-l-oranje border border-gray-100 dark:border-gray-700 p-5">
                 <div class="text-2xl mb-3"><?= $r['icoon'] ?></div>
                 <h3 class="font-display font-semibold text-base text-ink mb-2">
                     <?= htmlspecialchars($r['titel']) ?>
@@ -114,7 +114,7 @@ $vragen = [
 
     <!-- FAQ -->
     <h2 class="font-display text-xl font-bold mb-4">Veelgestelde vragen</h2>
-    <div class="bg-white rounded-xl border border-gray-100 divide-y divide-gray-100 mb-8" id="faq">
+    <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 divide-y divide-gray-100 dark:divide-gray-700 mb-8" id="faq">
         <?php foreach ($vragen as $i => $v): ?>
             <div class="faq-item">
                 <button onclick="wisselFaq(<?= $i ?>)"
@@ -131,11 +131,11 @@ $vragen = [
 
     <!-- Extra CTA's voor onderlinge linking -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <a href="bereken.php" class="bg-white border border-gray-100 rounded-xl p-5 hover:shadow-md transition-shadow group">
+        <a href="bereken.php" class="bg-white dark:bg-gray-800 dark:text-gray-200 border border-gray-100 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow group">
             <h4 class="font-display font-bold text-ink group-hover:text-oranje transition-colors mb-2">Check je huurprijs</h4>
             <p class="text-sm text-gedempt">Gebruik onze huurcheck tool om te zien of je niet te veel betaalt voor je woning.</p>
         </a>
-        <a href="zoeken.php" class="bg-white border border-gray-100 rounded-xl p-5 hover:shadow-md transition-shadow group">
+        <a href="zoeken.php" class="bg-white dark:bg-gray-800 dark:text-gray-200 border border-gray-100 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow group">
             <h4 class="font-display font-bold text-ink group-hover:text-oranje transition-colors mb-2">Zoek een nieuwe woning</h4>
             <p class="text-sm text-gedempt">Bekijk het actuele aanbod van sociale en vrije sector huurwoningen.</p>
         </a>

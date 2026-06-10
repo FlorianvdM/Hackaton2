@@ -77,7 +77,7 @@ $percentage = min(100, round($aantal / $doel * 100));
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
 
         <!-- Petitie -->
-        <div class="bg-white rounded-xl border border-gray-100 p-6">
+        <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-6">
             <div class="text-3xl mb-3">📝</div>
             <h2 class="font-display font-semibold text-lg mb-2">Teken de petitie</h2>
             <p class="text-sm text-gedempt mb-4">
@@ -114,7 +114,7 @@ $percentage = min(100, round($aantal / $doel * 100));
         </div>
 
         <!-- Schrijf je volksvertegenwoordiger -->
-        <div class="bg-white rounded-xl border border-gray-100 p-6">
+        <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-6">
             <div class="text-3xl mb-3">✉️</div>
             <h2 class="font-display font-semibold text-lg mb-2">Schrijf je volksvertegenwoordiger</h2>
             <p class="text-sm text-gedempt mb-4">
@@ -148,7 +148,7 @@ $percentage = min(100, round($aantal / $doel * 100));
         </div>
 
         <!-- Meld misstanden -->
-        <div class="bg-white rounded-xl border border-gray-100 p-6">
+        <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-6">
             <div class="text-3xl mb-3">🔔</div>
             <h2 class="font-display font-semibold text-lg mb-2">Meld misstanden</h2>
             <p class="text-sm text-gedempt mb-4">
@@ -161,7 +161,7 @@ $percentage = min(100, round($aantal / $doel * 100));
         </div>
 
         <!-- Deel op sociale media -->
-        <div class="bg-white rounded-xl border border-gray-100 p-6">
+        <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-6">
             <div class="text-3xl mb-3">📢</div>
             <h2 class="font-display font-semibold text-lg mb-2">Deel en verspreid</h2>
             <p class="text-sm text-gedempt mb-4">
@@ -203,15 +203,15 @@ $percentage = min(100, round($aantal / $doel * 100));
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-        <a href="over-de-crisis.php" class="bg-white border border-gray-100 rounded-xl p-5 hover:shadow-md transition-shadow group">
+        <a href="over-de-crisis.php" class="bg-white dark:bg-gray-800 dark:text-gray-200 border border-gray-100 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow group">
             <h4 class="font-display font-bold text-ink group-hover:text-oranje transition-colors mb-2">🏠 Over de crisis</h4>
             <p class="text-sm text-gedempt">Lees meer over de woningcrisis in Nederland en de belangrijkste cijfers.</p>
         </a>
-        <a href="nieuws.php" class="bg-white border border-gray-100 rounded-xl p-5 hover:shadow-md transition-shadow group">
+        <a href="nieuws.php" class="bg-white dark:bg-gray-800 dark:text-gray-200 border border-gray-100 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow group">
             <h4 class="font-display font-bold text-ink group-hover:text-oranje transition-colors mb-2">📰 Laatste nieuws</h4>
             <p class="text-sm text-gedempt">Blijf op de hoogte van de laatste ontwikkelingen op de woningmarkt.</p>
         </a>
-        <a href="rechten.php" class="bg-white border border-gray-100 rounded-xl p-5 hover:shadow-md transition-shadow group">
+        <a href="rechten.php" class="bg-white dark:bg-gray-800 dark:text-gray-200 border border-gray-100 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow group">
             <h4 class="font-display font-bold text-ink group-hover:text-oranje transition-colors mb-2">⚖️ Ken je rechten</h4>
             <p class="text-sm text-gedempt">Ontdek wat jouw rechten zijn als huurder en hoe je ze kunt beschermen.</p>
         </a>

@@ -58,7 +58,7 @@ $artikelen = [
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
         <?php foreach ($artikelen as $a): ?>
-            <div class="bg-white rounded-xl border border-gray-100 p-5 hover:shadow-md transition-shadow">
+            <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-5 hover:shadow-md transition-shadow">
                 <div class="flex items-center gap-2 mb-3">
                     <span class="text-xs text-gedempt"><?= $a['datum'] ?></span>
                     <span class="bg-oranje/10 text-oranje text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded">
@@ -82,11 +82,11 @@ $artikelen = [
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <a href="actie.php" class="bg-white border border-gray-100 rounded-xl p-5 hover:shadow-md transition-shadow group">
+        <a href="actie.php" class="bg-white dark:bg-gray-800 dark:text-gray-200 border border-gray-100 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow group">
             <h4 class="font-display font-bold text-ink group-hover:text-oranje transition-colors mb-2">📢 Kom in actie</h4>
             <p class="text-sm text-gedempt">Teken petities, schrijf je volksvertegenwoordiger en help de woningcrisis oplossen.</p>
         </a>
-        <a href="meldingen.php" class="bg-white border border-gray-100 rounded-xl p-5 hover:shadow-md transition-shadow group">
+        <a href="meldingen.php" class="bg-white dark:bg-gray-800 dark:text-gray-200 border border-gray-100 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow group">
             <h4 class="font-display font-bold text-ink group-hover:text-oranje transition-colors mb-2">🔔 Meld misstanden</h4>
             <p class="text-sm text-gedempt">Zie je illegale praktijken of discriminatie? Meld het via ons meldingssysteem.</p>
         </a>

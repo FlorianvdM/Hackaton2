@@ -85,7 +85,7 @@ include 'woningwijzer/includes/header.php';
 
         <!-- Snelzoek -->
         <form action="woningwijzer/pages/zoeken.php" method="GET"
-              class="bg-white rounded-xl p-3 flex flex-col sm:flex-row flex-wrap gap-2 max-w-2xl mx-auto">
+              class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl p-3 flex flex-col sm:flex-row flex-wrap gap-2 max-w-2xl mx-auto">
 
             <select name="type" class="w-full sm:flex-1 sm:min-w-[120px] border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-ink">
                 <option value="">Type woning</option>
@@ -149,7 +149,7 @@ include 'woningwijzer/includes/header.php';
             ];
             foreach ($stats as $s):
                 ?>
-                <div class="bg-white rounded-xl p-4 border border-gray-100">
+                <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
                     <div class="font-display text-2xl font-bold <?= $s['kleur'] ?> mb-1 leading-none">
                         <?= htmlspecialchars($s['getal']) ?>
                     </div>

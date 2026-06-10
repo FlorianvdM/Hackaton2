@@ -42,6 +42,7 @@ woningwijzer/
 - **PHP zonder framework**, alles in losse `.php` bestanden
 - **Navigatiepaden**: variabelen `$root` en `$pagesDir` zorgen dat links werken vanuit root (`/`) én submap (`/woningwijzer/`)
 - **Responsive**: Tailwind utility classes, hamburgermenu op mobiel
+- **Dark mode**: `darkMode: 'class'` in tailwind.config, togglebtn in nav, localStorage opslag. Voeg `dark:` varianten toe aan alle `bg-white`, `border-gray-100`, `text-gedempt` etc.
 - **Formulieren**: validatie aan de bovenkant, fouten in `$fouten[]` array, waarden uit `$_POST` behouden
 - **Redirects** (POST-redirect-GET): `header("Location: ...")` + `exit` — altijd vóór enige HTML-output
 

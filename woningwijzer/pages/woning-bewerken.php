@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endif; ?>
 
         <form method="POST" action="woning-bewerken.php?id=<?= $id ?>"
-              class="bg-white rounded-xl border border-gray-100 p-6 space-y-5">
+              class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-6 space-y-5">
 
             <div>
                 <label class="block text-xs font-semibold uppercase tracking-wide text-gedempt mb-1">Type woning</label>

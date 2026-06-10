@@ -104,7 +104,7 @@ require_once __DIR__ . '/../includes/header.php';
     <?php endif; ?>
 
     <form method="POST" action="woning-toevoegen.php"
-          class="bg-white rounded-xl border border-gray-100 p-6 space-y-5">
+          class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-6 space-y-5">
 
         <!-- Type -->
         <div>

@@ -55,24 +55,24 @@ require_once __DIR__ . '/../includes/header.php';
     <?php endif; ?>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div class="bg-white rounded-xl border border-gray-100 p-5 text-center">
+        <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-5 text-center">
             <div class="text-3xl mb-2">📋</div>
             <p class="font-display font-bold text-2xl text-oranje"><?= count($meldingen) ?></p>
             <p class="text-xs text-gedempt">Totaal meldingen</p>
         </div>
-        <div class="bg-white rounded-xl border border-gray-100 p-5 text-center">
+        <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-5 text-center">
             <div class="text-3xl mb-2">🔄</div>
             <p class="font-display font-bold text-2xl text-oranje"><?= count(array_filter($meldingen, fn($m) => $m['status'] === 'In behandeling' || $m['status'] === 'Gemeld bij Huurcommissie')) ?></p>
             <p class="text-xs text-gedempt">In behandeling</p>
         </div>
-        <div class="bg-white rounded-xl border border-gray-100 p-5 text-center">
+        <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-5 text-center">
             <div class="text-3xl mb-2">✅</div>
             <p class="font-display font-bold text-2xl text-green-600"><?= count(array_filter($meldingen, fn($m) => $m['status'] === 'Afgehandeld')) ?></p>
             <p class="text-xs text-gedempt">Afgehandeld</p>
         </div>
     </div>
 
-    <div class="bg-white rounded-xl border border-gray-100 overflow-hidden mb-8">
+    <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 overflow-hidden mb-8">
         <div class="p-5 border-b border-gray-100 flex items-center justify-between">
             <h2 class="font-display font-semibold text-lg">Overzicht meldingen</h2>
             <button onclick="document.getElementById('meldingForm').classList.toggle('hidden')" class="bg-oranje hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors cursor-pointer">
@@ -80,7 +80,7 @@ require_once __DIR__ . '/../includes/header.php';
             </button>
         </div>
 
-        <div id="meldingForm" class="p-5 border-b border-gray-100 bg-orange-50 <?= (!empty($fouten)) ? '' : 'hidden' ?>">
+        <div id="meldingForm" class="p-5 border-b border-gray-100 dark:border-gray-700 bg-orange-50 dark:bg-gray-800 <?= (!empty($fouten)) ? '' : 'hidden' ?>">
             <form method="POST" class="space-y-4 max-w-lg">
                 <div>
                     <label class="block text-sm font-semibold mb-1">Type melding</label>
@@ -127,11 +127,11 @@ require_once __DIR__ . '/../includes/header.php';
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <a href="rechten.php" class="bg-white border border-gray-100 rounded-xl p-5 hover:shadow-md transition-shadow group">
+        <a href="rechten.php" class="bg-white dark:bg-gray-800 dark:text-gray-200 border border-gray-100 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow group">
             <h4 class="font-display font-bold text-ink group-hover:text-oranje transition-colors mb-2">⚖️ Ken je rechten</h4>
             <p class="text-sm text-gedempt">Lees wat jouw rechten zijn als huurder en hoe je huurgeschillen kunt aanvechten.</p>
         </a>
-        <a href="actie.php" class="bg-white border border-gray-100 rounded-xl p-5 hover:shadow-md transition-shadow group">
+        <a href="actie.php" class="bg-white dark:bg-gray-800 dark:text-gray-200 border border-gray-100 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow group">
             <h4 class="font-display font-bold text-ink group-hover:text-oranje transition-colors mb-2">📢 Doe mee</h4>
             <p class="text-sm text-gedempt">Teken de petitie, schrijf je volksvertegenwoordiger en help de woningcrisis oplossen.</p>
         </a>

@@ -13,7 +13,7 @@ require_once __DIR__ . '/../includes/header.php';
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
 
-        <div class="bg-white rounded-xl border border-gray-100 p-6">
+        <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-6">
             <h2 class="font-display font-semibold text-lg mb-3">📈 Oorzaken</h2>
             <ul class="space-y-4 text-sm text-gedempt">
                 <li class="flex gap-3">
@@ -39,7 +39,7 @@ require_once __DIR__ . '/../includes/header.php';
             </ul>
         </div>
 
-        <div class="bg-white rounded-xl border border-gray-100 p-6">
+        <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-6">
             <h2 class="font-display font-semibold text-lg mb-3">🔢 De cijfers</h2>
             <div class="grid grid-cols-2 gap-3">
                 <?php
@@ -66,15 +66,15 @@ require_once __DIR__ . '/../includes/header.php';
     <div class="bg-orange-50 border border-orange-200 rounded-xl p-6 mb-12">
         <h2 class="font-display font-semibold text-lg mb-3">⚡ Wat er moet gebeuren</h2>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
-            <div class="bg-white rounded-xl p-4">
+            <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl p-4">
                 <p class="font-bold text-ink mb-1">🏗️ Versneld bouwen</p>
                 <p class="text-gedempt">Meer locaties vrijmaken, bouwvergunningen versnellen en stikstofregels hervormen zodat er wél gebouwd kan worden.</p>
             </div>
-            <div class="bg-white rounded-xl p-4">
+            <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl p-4">
                 <p class="font-bold text-ink mb-1">🛑 Beleggers weren</p>
                 <p class="text-gedempt">Woningen zijn voor bewoners, niet voor beleggers. Inkoop door investeerders moet aan banden worden gelegd.</p>
             </div>
-            <div class="bg-white rounded-xl p-4">
+            <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl p-4">
                 <p class="font-bold text-ink mb-1">🧑‍⚖️ Huurders beschermen</p>
                 <p class="text-gedempt">De Wet betaalbare huur moet worden versterkt. Huurgeschillen moeten sneller en eenvoudiger worden behandeld.</p>
             </div>
@@ -82,15 +82,15 @@ require_once __DIR__ . '/../includes/header.php';
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <a href="actie.php" class="bg-white border border-gray-100 rounded-xl p-5 hover:shadow-md transition-shadow group">
+        <a href="actie.php" class="bg-white dark:bg-gray-800 dark:text-gray-200 border border-gray-100 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow group">
             <h4 class="font-display font-bold text-ink group-hover:text-oranje transition-colors mb-2">📢 Kom in actie</h4>
             <p class="text-sm text-gedempt">Teken de petitie, schrijf je volksvertegenwoordiger en help de crisis oplossen.</p>
         </a>
-        <a href="nieuws.php" class="bg-white border border-gray-100 rounded-xl p-5 hover:shadow-md transition-shadow group">
+        <a href="nieuws.php" class="bg-white dark:bg-gray-800 dark:text-gray-200 border border-gray-100 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow group">
             <h4 class="font-display font-bold text-ink group-hover:text-oranje transition-colors mb-2">📰 Laatste nieuws</h4>
             <p class="text-sm text-gedempt">Blijf op de hoogte van de laatste ontwikkelingen op de woningmarkt.</p>
         </a>
-        <a href="rechten.php" class="bg-white border border-gray-100 rounded-xl p-5 hover:shadow-md transition-shadow group">
+        <a href="rechten.php" class="bg-white dark:bg-gray-800 dark:text-gray-200 border border-gray-100 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow group">
             <h4 class="font-display font-bold text-ink group-hover:text-oranje transition-colors mb-2">⚖️ Ken je rechten</h4>
             <p class="text-sm text-gedempt">Ontdek wat jouw rechten zijn als huurder en hoe je ze kunt beschermen.</p>
         </a>

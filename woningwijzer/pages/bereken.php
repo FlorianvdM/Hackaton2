@@ -37,7 +37,7 @@ require_once __DIR__ . '/../includes/header.php';
 
     <!-- ======== TAB 1: Hypotheek ======== -->
     <div id="paneel-hypotheek" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-white rounded-xl border border-gray-100 p-6">
+        <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-6">
             <h2 class="font-display font-semibold text-lg mb-4">Maximale hypotheek berekenen</h2>
 
             <div class="space-y-4">
@@ -87,7 +87,7 @@ require_once __DIR__ . '/../includes/header.php';
             ];
             foreach ($tips as $tip):
                 ?>
-                <div class="bg-white rounded-xl border border-gray-100 p-4 flex gap-3">
+                <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-4 flex gap-3">
                     <span class="<?= $tip['kleur'] ?> text-xs font-bold px-2 py-0.5 rounded h-fit shrink-0">
                         <?= $tip['titel'] ?>
                     </span>
@@ -99,7 +99,7 @@ require_once __DIR__ . '/../includes/header.php';
 
     <!-- ======== TAB 2: Huurcheck ======== -->
     <div id="paneel-huurcheck" class="grid grid-cols-1 md:grid-cols-2 gap-6 hidden">
-        <div class="bg-white rounded-xl border border-gray-100 p-6">
+        <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-6">
             <h2 class="font-display font-semibold text-lg mb-4">Is mijn huur redelijk?</h2>
             <div class="space-y-4">
                 <div>
@@ -154,7 +154,7 @@ require_once __DIR__ . '/../includes/header.php';
 
     <!-- ======== TAB 3: Huurtoeslag ======== -->
     <div id="paneel-toeslag" class="grid grid-cols-1 md:grid-cols-2 gap-6 hidden">
-        <div class="bg-white rounded-xl border border-gray-100 p-6">
+        <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-6">
             <h2 class="font-display font-semibold text-lg mb-4">Huurtoeslag berekenen</h2>
             <div class="space-y-4">
                 <div>
@@ -188,7 +188,7 @@ require_once __DIR__ . '/../includes/header.php';
                 <p class="font-semibold mb-1">✅ Direct aanvragen</p>
                 <p>Huurtoeslag vraag je aan via de Belastingdienst met DigiD. Je ontvangt toeslag zolang je huur onder de grens ligt en je inkomen voldoet aan de norm.</p>
             </div>
-            <div class="bg-white rounded-xl border border-gray-100 p-4">
+            <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-4">
                 <h4 class="font-semibold text-sm mb-3">Inkomensgrenzen 2024</h4>
                 <table class="w-full text-sm">
                     <tr class="border-b border-gray-100">

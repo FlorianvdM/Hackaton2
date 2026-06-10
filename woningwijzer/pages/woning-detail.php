@@ -41,7 +41,7 @@ $woning = $stmt->fetch();
             default => $woning['categorie'],
         };
         ?>
-        <div class="bg-white rounded-xl border border-gray-100 overflow-hidden">
+        <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 overflow-hidden">
             <div class="bg-gray-100 h-56 flex items-center justify-center text-6xl">
                 <?= $woning['type'] === 'kamer' ? '🛏️' : ($woning['type'] === 'studio' ? '🪟' : ($woning['categorie'] === 'koop' ? '🏡' : '🏢')) ?>
             </div>
@@ -85,7 +85,7 @@ $woning = $stmt->fetch();
             </div>
         </div>
 
-        <div class="mt-6 bg-white rounded-xl border border-gray-100 overflow-hidden p-6">
+        <div class="mt-6 bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 overflow-hidden p-6">
             <h3 class="font-display font-semibold text-base mb-4">📍 Locatie</h3>
             <div id="detail-kaart" style="height: 300px;" class="rounded-xl border border-gray-100"></div>
         </div>

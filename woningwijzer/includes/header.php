@@ -26,6 +26,7 @@ $pagesDir = $inPages ? './' : 'woningwijzer/pages/';
 
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -49,7 +50,7 @@ $pagesDir = $inPages ? './' : 'woningwijzer/pages/';
         <link rel="stylesheet" href="assets/css/<?= htmlspecialchars($paginaCss) ?>">
     <?php endif; ?>
 </head>
-<body class="bg-room font-sans text-ink min-h-screen flex flex-col">
+<body class="bg-room dark:bg-gray-950 font-sans text-ink dark:text-gray-100 min-h-screen flex flex-col">
 
 <!-- Navigatie -->
 <nav class="bg-ink sticky top-0 z-50 shadow-lg">
@@ -95,6 +96,11 @@ $pagesDir = $inPages ? './' : 'woningwijzer/pages/';
             <?php endforeach; ?>
 
             <li class="ml-2">
+                <button id="dark-toggle" class="text-white/70 hover:text-white p-2 rounded-md hover:bg-white/10 transition-colors text-sm" aria-label="Donker/licht modus">
+                    <span id="dark-icon">🌙</span>
+                </button>
+            </li>
+            <li class="ml-2">
                 <a href="<?= $pagesDir ?>actie.php"
                    class="bg-oranje hover:bg-orange-700 text-white px-4 py-2 rounded-md text-sm font-semibold transition-colors">
                     Doe mee
@@ -116,6 +122,9 @@ $pagesDir = $inPages ? './' : 'woningwijzer/pages/';
                     <?= $item['label'] ?>
                 </a>
             <?php endforeach; ?>
+            <button id="dark-toggle-mobile" class="w-full text-left text-white/70 hover:text-white hover:bg-white/10 block px-3 py-2 rounded-md text-sm font-medium transition-colors mt-2">
+                <span id="dark-icon-mobile">🌙</span> Donker modus
+            </button>
             <a href="<?= $pagesDir ?>actie.php"
                class="block text-center bg-oranje hover:bg-orange-700 text-white px-4 py-2 rounded-md text-sm font-semibold transition-colors mt-2">
                 Doe mee
@@ -126,11 +135,50 @@ $pagesDir = $inPages ? './' : 'woningwijzer/pages/';
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+    // Mobiel menu toggle
     var toggle = document.getElementById('menu-toggle');
     var menu = document.getElementById('mobile-menu');
     if (toggle && menu) {
         toggle.addEventListener('click', function () {
             menu.classList.toggle('hidden');
+        });
+    }
+
+    // Dark mode toggle
+    var html = document.documentElement;
+    var icons = [
+        document.getElementById('dark-icon'),
+        document.getElementById('dark-icon-mobile'),
+    ];
+    var labels = document.getElementById('dark-toggle-mobile');
+
+    function setTheme(dark) {
+        if (dark) {
+            html.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+            icons.forEach(function (el) { if (el) el.textContent = '☀️'; });
+            if (labels) labels.textContent = '☀️ Licht modus';
+        } else {
+            html.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+            icons.forEach(function (el) { if (el) el.textContent = '🌙'; });
+            if (labels) labels.textContent = '🌙 Donker modus';
+        }
+    }
+
+    // Laad voorkeur
+    var saved = localStorage.getItem('theme');
+    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        setTheme(true);
+    }
+
+    document.getElementById('dark-toggle').addEventListener('click', function () {
+        setTheme(!html.classList.contains('dark'));
+    });
+    var mobileToggle = document.getElementById('dark-toggle-mobile');
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', function () {
+            setTheme(!html.classList.contains('dark'));
         });
     }
 });
