@@ -65,12 +65,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $briefBericht = 'Vul je naam en gemeente in.';
         }
-            $body .= "Ik hoop op uw steun.\n\nMet vriendelijke groet,\n$briefNaam";
-            $bodyEnc = rawurlencode($body);
-            $briefBericht = $bodyEnc;
-        } else {
-            $briefBericht = 'Vul je naam en gemeente in.';
-        }
     } elseif ($actie === 'nieuwsbrief') {
         $nieuwsEmail = trim($_POST['nieuws_email'] ?? '');
         if ($nieuwsEmail !== '') {
