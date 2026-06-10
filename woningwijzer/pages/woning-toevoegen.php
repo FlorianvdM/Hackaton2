@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <div class="max-w-2xl mx-auto px-4 py-10">
 
-    <a href="/pages/zoeken.php" class="text-sm text-gedempt hover:text-ink mb-6 inline-flex items-center gap-1">
+    <a href="zoeken.php" class="text-sm text-gedempt hover:text-ink mb-6 inline-flex items-center gap-1">
         ← Terug naar overzicht
     </a>
 
@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php if ($succes): ?>
         <div class="bg-green-50 border border-green-200 text-green-800 rounded-xl p-4 mb-6 flex items-center gap-3">
             ✅ <span class="font-semibold">Woning succesvol toegevoegd!</span>
-            <a href="/pages/zoeken.php" class="ml-auto text-sm underline">Bekijk overzicht</a>
+            <a href="zoeken.php" class="ml-auto text-sm underline">Bekijk overzicht</a>
         </div>
     <?php endif; ?>
 
@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     <?php endif; ?>
 
-    <form method="POST" action="/pages/woning-toevoegen.php"
+    <form method="POST" action="woning-toevoegen.php"
           class="bg-white rounded-xl border border-gray-100 p-6 space-y-5">
 
         <!-- Type -->
@@ -168,7 +168,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     class="bg-oranje hover:bg-orange-700 text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-colors">
                 Woning opslaan
             </button>
-            <a href="/pages/zoeken.php"
+            <a href="zoeken.php"
                class="border border-gray-200 hover:bg-gray-50 text-ink px-5 py-2.5 rounded-lg text-sm transition-colors">
                 Annuleren
             </a>

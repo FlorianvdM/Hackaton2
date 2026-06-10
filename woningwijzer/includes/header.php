@@ -37,7 +37,7 @@ $huidigePagina = basename($_SERVER['PHP_SELF'], '.php');
 
     <!-- Pagina-specifieke CSS -->
     <?php if (!empty($paginaCss)): ?>
-        <link rel="stylesheet" href="/assets/css/<?= htmlspecialchars($paginaCss) ?>">
+        <link rel="stylesheet" href="assets/css/<?= htmlspecialchars($paginaCss) ?>">
     <?php endif; ?>
 </head>
 <body class="bg-room font-sans text-ink min-h-screen flex flex-col">

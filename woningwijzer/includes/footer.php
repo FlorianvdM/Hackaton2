@@ -40,10 +40,10 @@
                 <div>
                     <h5 class="text-xs font-semibold uppercase tracking-widest text-white/90 mb-3">Informatie</h5>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="/index.php"          class="hover:text-white transition-colors">Over de crisis</a></li>
-                        <li><a href="/pages/nieuws.php"   class="hover:text-white transition-colors">Nieuws &amp; beleid</a></li>
-                        <li><a href="/pages/meldingen.php"class="hover:text-white transition-colors">Meldingen</a></li>
-                        <li><a href="/pages/actie.php"    class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="index.php"          class="hover:text-white transition-colors">Over de crisis</a></li>
+                        <li><a href="woningwijzer/pages/nieuws.php"   class="hover:text-white transition-colors">Nieuws &amp; beleid</a></li>
+                        <li><a href="woningwijzer/pages/meldingen.php"class="hover:text-white transition-colors">Meldingen</a></li>
+                        <li><a href="woningwijzer/pages/actie.php"    class="hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
 

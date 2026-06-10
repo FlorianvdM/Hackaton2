@@ -79,7 +79,7 @@ $woningen = array_filter($alleWoningen, function ($w) use ($filterType, $filterS
     <h1 class="font-display text-3xl font-bold mb-6">Woningen zoeken</h1>
 
     <!-- Filterformulier -->
-    <form method="GET" action="/pages/zoeken.php"
+    <form method="GET" action="zoeken.php"
           class="bg-white rounded-xl border border-gray-100 p-4 mb-8 flex flex-wrap gap-3 items-end">
 
         <!-- Type -->
@@ -132,7 +132,7 @@ $woningen = array_filter($alleWoningen, function ($w) use ($filterType, $filterS
                     class="bg-oranje hover:bg-orange-700 text-white px-5 py-2 rounded-lg text-sm font-semibold transition-colors">
                 Zoeken
             </button>
-            <a href="/pages/zoeken.php"
+            <a href="zoeken.php"
                class="border border-gray-200 hover:bg-gray-50 text-ink px-4 py-2 rounded-lg text-sm transition-colors">
                 Reset
             </a>
@@ -145,7 +145,7 @@ $woningen = array_filter($alleWoningen, function ($w) use ($filterType, $filterS
             <strong class="text-ink"><?= count($woningen) ?></strong> woningen gevonden
         </p>
         <!-- CREATE knop — alleen zichtbaar voor beheerders in echte versie -->
-        <a href="/pages/woning-toevoegen.php"
+        <a href="woning-toevoegen.php"
            class="bg-ink hover:bg-ink2 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
             + Woning toevoegen
         </a>
@@ -209,15 +209,15 @@ $woningen = array_filter($alleWoningen, function ($w) use ($filterType, $filterS
 
                         <!-- Actieknoppen: CRUD (Update / Delete) -->
                         <div class="flex gap-2 mt-3 pt-3 border-t border-gray-100">
-                            <a href="/pages/woning-detail.php?id=<?= $w['id'] ?>"
+                            <a href="woning-detail.php?id=<?= $w['id'] ?>"
                                class="flex-1 text-center text-xs font-semibold py-1.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
                                 Bekijken
                             </a>
-                            <a href="/pages/woning-bewerken.php?id=<?= $w['id'] ?>"
+                            <a href="woning-bewerken.php?id=<?= $w['id'] ?>"
                                class="flex-1 text-center text-xs font-semibold py-1.5 border border-blue-200 text-blue-700 rounded-lg hover:bg-blue-50 transition-colors">
                                 Bewerken
                             </a>
-                            <a href="/pages/woning-verwijderen.php?id=<?= $w['id'] ?>"
+                            <a href="woning-verwijderen.php?id=<?= $w['id'] ?>"
                                class="flex-1 text-center text-xs font-semibold py-1.5 border border-red-200 text-red-600 rounded-lg hover:bg-red-50 transition-colors"
                                onclick="return confirm('Weet je zeker dat je deze woning wilt verwijderen?')">
                                 Verwijderen
