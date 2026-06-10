@@ -104,7 +104,7 @@ require_once __DIR__ . '/../includes/header.php';
         </div>
         <div class="divide-y divide-gray-100">
             <?php foreach ($meldingen as $m): ?>
-                <div class="p-4 sm:p-5 grid grid-cols-1 sm:grid-cols-[auto_auto_1fr_auto] gap-2 sm:gap-3 items-start sm:items-center">
+                <div class="melding-row p-4 sm:p-5 grid grid-cols-1 sm:grid-cols-[auto_auto_1fr_auto] gap-2 sm:gap-3 items-start sm:items-center">
                     <span class="text-xs font-semibold uppercase tracking-wide text-gedempt"><?= date('j M Y', strtotime($m['aangemaakt_op'])) ?></span>
                     <span class="<?= match($m['status']) {
                         'Open' => 'bg-yellow-100 text-yellow-800',
@@ -117,7 +117,10 @@ require_once __DIR__ . '/../includes/header.php';
                     </span>
                     <span class="font-semibold text-sm capitalize"><?= $m['type'] ?></span>
                     <p class="text-sm text-gedempt sm:col-span-1 col-span-2"><?= htmlspecialchars($m['omschrijving']) ?></p>
-                    <a href="#" class="text-oranje text-xs font-semibold hover:underline sm:col-span-1 col-span-2 justify-self-end">Details →</a>
+                    <button onclick="this.closest('.melding-row').querySelector('.melding-detail').classList.toggle('hidden')" class="text-oranje text-xs font-semibold hover:underline sm:col-span-1 col-span-2 justify-self-end cursor-pointer">Details →</button>
+                    <div class="melding-detail hidden col-span-full text-xs text-gedempt border-t border-gray-100 pt-2 mt-1">
+                        Ingediend op: <?= date('j M Y H:i', strtotime($m['aangemaakt_op'])) ?>
+                    </div>
                 </div>
             <?php endforeach; ?>
         </div>
