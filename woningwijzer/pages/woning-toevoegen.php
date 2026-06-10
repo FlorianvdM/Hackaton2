@@ -58,26 +58,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Opslaan als geen fouten (CREATE — INSERT in database)
     if (empty($fouten)) {
-        /*
-         * MET DATABASE:
-         *
-         * $db   = getDb();
-         * $stmt = $db->prepare("
-         *     INSERT INTO woningen (type, stad, categorie, prijs, kamers, oppervlak, omschrijving, lat, lng, aangemaakt_op)
-         *     VALUES (:type, :stad, :categorie, :prijs, :kamers, :oppervlak, :omschrijving, :lat, :lng, NOW())
-         * ");
-         * $stmt->execute([
-         *     ':type'         => $type,
-         *     ':stad'         => $stad,
-         *     ':categorie'    => $categorie,
-         *     ':prijs'        => $prijs,
-         *     ':kamers'       => $kamers,
-         *     ':oppervlak'    => $oppervlak,
-         *     ':omschrijving' => $omschrijving,
-         *     ':lat'          => $lat,
-         *     ':lng'          => $lng,
-         * ]);
-         */
+        $db = getDb();
+        $stmt = $db->prepare("
+            INSERT INTO woningen (type, stad, categorie, prijs, kamers, oppervlak, omschrijving, lat, lng, aangemaakt_op)
+            VALUES (:type, :stad, :categorie, :prijs, :kamers, :oppervlak, :omschrijving, :lat, :lng, NOW())
+        ");
+        $stmt->execute([
+            ':type'         => $type,
+            ':stad'         => $stad,
+            ':categorie'    => $categorie,
+            ':prijs'        => $prijs,
+            ':kamers'       => $kamers,
+            ':oppervlak'    => $oppervlak,
+            ':omschrijving' => $omschrijving,
+            ':lat'          => $lat,
+            ':lng'          => $lng,
+        ]);
 
         $succes = true;
     }

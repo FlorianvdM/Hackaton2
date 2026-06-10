@@ -5,18 +5,10 @@ require_once __DIR__ . '/../includes/db.php';
 
 $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
-$demoWoningen = [
-    1 => ['type' => 'appartement', 'stad' => 'amsterdam', 'categorie' => 'vrij', 'prijs' => 1650, 'kamers' => 2, 'oppervlak' => 58, 'omschrijving' => 'Licht appartement in de Jordaan met balkon.'],
-    2 => ['type' => 'woning', 'stad' => 'rotterdam', 'categorie' => 'koop', 'prijs' => 285000, 'kamers' => 4, 'oppervlak' => 102, 'omschrijving' => 'Ruime rijtjeswoning met tuin in Kralingen.'],
-    3 => ['type' => 'studio', 'stad' => 'utrecht', 'categorie' => 'vrij', 'prijs' => 1100, 'kamers' => 1, 'oppervlak' => 32, 'omschrijving' => 'Moderne studio nabij Centraal Station.'],
-    4 => ['type' => 'appartement', 'stad' => 'denhaag', 'categorie' => 'sociaal', 'prijs' => 760, 'kamers' => 3, 'oppervlak' => 75, 'omschrijving' => 'Sociale huurwoning, inschrijftijd vereist.'],
-    5 => ['type' => 'kamer', 'stad' => 'groningen', 'categorie' => 'vrij', 'prijs' => 620, 'kamers' => 1, 'oppervlak' => 18, 'omschrijving' => 'Gemeubileerde kamer in studentenhuis centrum.'],
-    6 => ['type' => 'woning', 'stad' => 'eindhoven', 'categorie' => 'koop', 'prijs' => 340000, 'kamers' => 5, 'oppervlak' => 130, 'omschrijving' => 'Vrijstaande woning met garage en grote tuin.'],
-    7 => ['type' => 'appartement', 'stad' => 'amsterdam', 'categorie' => 'koop', 'prijs' => 425000, 'kamers' => 2, 'oppervlak' => 64, 'omschrijving' => 'Instapklaar appartement in De Pijp.'],
-    8 => ['type' => 'studio', 'stad' => 'rotterdam', 'categorie' => 'vrij', 'prijs' => 950, 'kamers' => 1, 'oppervlak' => 28, 'omschrijving' => 'Gezellige studio met uitzicht op de Maas.'],
-];
-
-$woning = $demoWoningen[$id] ?? null;
+$db = getDb();
+$stmt = $db->prepare("SELECT * FROM woningen WHERE id = :id");
+$stmt->execute([':id' => $id]);
+$woning = $stmt->fetch();
 
 $succes = false;
 $fouten = [];
@@ -39,6 +31,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($omschrijving)) $fouten[] = 'Schrijf een korte omschrijving.';
 
     if (empty($fouten)) {
+        $stmt = $db->prepare("
+            UPDATE woningen
+            SET type = :type, stad = :stad, categorie = :categorie, prijs = :prijs,
+                kamers = :kamers, oppervlak = :oppervlak, omschrijving = :omschrijving
+            WHERE id = :id
+        ");
+        $stmt->execute([
+            ':type'         => $type,
+            ':stad'         => $stad,
+            ':categorie'    => $categorie,
+            ':prijs'        => $prijs,
+            ':kamers'       => $kamers,
+            ':oppervlak'    => $oppervlak,
+            ':omschrijving' => $omschrijving,
+            ':id'           => $id,
+        ]);
+        $woning = array_merge($woning, $_POST);
         $succes = true;
     }
 }

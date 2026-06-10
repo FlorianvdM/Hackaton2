@@ -15,62 +15,31 @@ $filterCategorie = $_GET['categorie'] ?? '';
 $filterBudget = !empty($_GET['budget']) ? (int) $_GET['budget'] : 0;
 
 // --- Woningen ophalen uit database (READ) ---
-// Eerstejaars taak: schrijf deze SELECT query
+$db = getDb();
+$sql = "SELECT * FROM woningen WHERE 1=1";
+$params = [];
 
-/*
- * ECHT VOORBEELD MET DATABASE:
- *
- * $db  = getDb();
- * $sql = "SELECT * FROM woningen WHERE 1=1";
- * $params = [];
- *
- * if ($filterType !== '') {
- *     $sql .= " AND type = :type";
- *     $params[':type'] = $filterType;
- * }
- * if ($filterStad !== '') {
- *     $sql .= " AND stad = :stad";
- *     $params[':stad'] = $filterStad;
- * }
- * if ($filterCategorie !== '') {
- *     $sql .= " AND categorie = :categorie";
- *     $params[':categorie'] = $filterCategorie;
- * }
- * if ($filterBudget > 0) {
- *     $sql .= " AND prijs <= :budget";
- *     $params[':budget'] = $filterBudget;
- * }
- *
- * $sql .= " ORDER BY aangemaakt_op DESC";
- * $stmt = $db->prepare($sql);
- * $stmt->execute($params);
- * $woningen = $stmt->fetchAll();
- */
+if ($filterType !== '') {
+    $sql .= " AND type = :type";
+    $params[':type'] = $filterType;
+}
+if ($filterStad !== '') {
+    $sql .= " AND stad = :stad";
+    $params[':stad'] = $filterStad;
+}
+if ($filterCategorie !== '') {
+    $sql .= " AND categorie = :categorie";
+    $params[':categorie'] = $filterCategorie;
+}
+if ($filterBudget > 0) {
+    $sql .= " AND prijs <= :budget";
+    $params[':budget'] = $filterBudget;
+}
 
-// Demo-data (vervangt database zolang die niet is ingericht)
-$alleWoningen = [
-    ['id' => 1, 'type' => 'appartement', 'stad' => 'amsterdam',   'categorie' => 'vrij',    'prijs' => 1650,  'kamers' => 2, 'oppervlak' => 58,  'lat' => 52.368, 'lng' => 4.885,  'omschrijving' => 'Licht appartement in de Jordaan met balkon.'],
-    ['id' => 2, 'type' => 'woning',      'stad' => 'rotterdam',   'categorie' => 'koop',    'prijs' => 285000,'kamers' => 4, 'oppervlak' => 102, 'lat' => 51.927, 'lng' => 4.505,  'omschrijving' => 'Ruime rijtjeswoning met tuin in Kralingen.'],
-    ['id' => 3, 'type' => 'studio',      'stad' => 'utrecht',     'categorie' => 'vrij',    'prijs' => 1100,  'kamers' => 1, 'oppervlak' => 32,  'lat' => 52.090, 'lng' => 5.117,  'omschrijving' => 'Moderne studio nabij Centraal Station.'],
-    ['id' => 4, 'type' => 'appartement', 'stad' => 'denhaag',     'categorie' => 'sociaal', 'prijs' => 760,   'kamers' => 3, 'oppervlak' => 75,  'lat' => 52.072, 'lng' => 4.306,  'omschrijving' => 'Sociale huurwoning, inschrijftijd vereist.'],
-    ['id' => 5, 'type' => 'kamer',       'stad' => 'groningen',   'categorie' => 'vrij',    'prijs' => 620,   'kamers' => 1, 'oppervlak' => 18,  'lat' => 53.220, 'lng' => 6.565,  'omschrijving' => 'Gemeubileerde kamer in studentenhuis centrum.'],
-    ['id' => 6, 'type' => 'woning',      'stad' => 'eindhoven',   'categorie' => 'koop',    'prijs' => 340000,'kamers' => 5, 'oppervlak' => 130, 'lat' => 51.442, 'lng' => 5.469,  'omschrijving' => 'Vrijstaande woning met garage en grote tuin.'],
-    ['id' => 7, 'type' => 'appartement', 'stad' => 'amsterdam',   'categorie' => 'koop',    'prijs' => 425000,'kamers' => 2, 'oppervlak' => 64,  'lat' => 52.354, 'lng' => 4.893,  'omschrijving' => 'Instapklaar appartement in De Pijp.'],
-    ['id' => 8, 'type' => 'studio',      'stad' => 'rotterdam',   'categorie' => 'vrij',    'prijs' => 950,   'kamers' => 1, 'oppervlak' => 28,  'lat' => 51.907, 'lng' => 4.487,  'omschrijving' => 'Gezellige studio met uitzicht op de Maas.'],
-];
-
-// Filter toepassen op demo-data
-$woningen = array_filter($alleWoningen, function ($w) use ($filterType, $filterStad, $filterCategorie, $filterBudget) {
-    if ($filterType !== '' && $w['type'] !== $filterType)
-        return false;
-    if ($filterStad !== '' && $w['stad'] !== $filterStad)
-        return false;
-    if ($filterCategorie !== '' && $w['categorie'] !== $filterCategorie)
-        return false;
-    if ($filterBudget > 0 && $w['prijs'] > $filterBudget)
-        return false;
-    return true;
-});
+$sql .= " ORDER BY aangemaakt_op DESC";
+$stmt = $db->prepare($sql);
+$stmt->execute($params);
+$woningen = $stmt->fetchAll();
 ?>
 
 <div class="max-w-6xl mx-auto px-4 py-10">

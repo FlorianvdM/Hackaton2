@@ -8,6 +8,9 @@ $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 $verwijderd = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $id > 0) {
+    $db = getDb();
+    $stmt = $db->prepare("DELETE FROM woningen WHERE id = :id");
+    $stmt->execute([':id' => $id]);
     $verwijderd = true;
 }
 ?>

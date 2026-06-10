@@ -3,12 +3,8 @@ $paginaTitel = 'Meldingen';
 require_once __DIR__ . '/../includes/header.php';
 require_once __DIR__ . '/../includes/db.php';
 
-$meldingen = [
-    ['id' => 1, 'type' => 'discriminatie', 'omschrijving' => 'Huisbazin weigert huurders met migratieachtergrond.', 'status' => 'In behandeling', 'datum' => '2 juni 2026'],
-    ['id' => 2, 'type' => 'illegale praktijken', 'omschrijving' => 'Verhuurder vraagt sleutelgeld van € 2.000 voor sociale huurwoning.', 'status' => 'Gemeld bij Huurcommissie', 'datum' => '28 mei 2026'],
-    ['id' => 3, 'type' => 'onderhoud', 'omschrijving' => 'Schimmel in slaapkamer al 8 maanden niet verholpen door verhuurder.', 'status' => 'Open', 'datum' => '15 mei 2026'],
-    ['id' => 4, 'type' => 'huurverhoging', 'omschrijving' => 'Huurverhoging van 12% ontvangen, terwijl maximum 5,8% is.', 'status' => 'Afgehandeld', 'datum' => '3 mei 2026'],
-];
+$db = getDb();
+$meldingen = $db->query("SELECT * FROM meldingen ORDER BY aangemaakt_op DESC")->fetchAll();
 ?>
 
 <div class="max-w-6xl mx-auto px-4 py-10">
@@ -47,7 +43,7 @@ $meldingen = [
         <div class="divide-y divide-gray-100">
             <?php foreach ($meldingen as $m): ?>
                 <div class="p-4 sm:p-5 grid grid-cols-1 sm:grid-cols-[auto_auto_1fr_auto] gap-2 sm:gap-3 items-start sm:items-center">
-                    <span class="text-xs font-semibold uppercase tracking-wide text-gedempt"><?= $m['datum'] ?></span>
+                    <span class="text-xs font-semibold uppercase tracking-wide text-gedempt"><?= date('j M Y', strtotime($m['aangemaakt_op'])) ?></span>
                     <span class="<?= match($m['status']) {
                         'Open' => 'bg-yellow-100 text-yellow-800',
                         'In behandeling' => 'bg-blue-100 text-blue-800',

@@ -1,24 +1,7 @@
 <?php
 $paginaTitel = 'Doe mee & actie';
 require_once __DIR__ . '/../includes/header.php';
-
-$dataBestand = __DIR__ . '/../data/actie.json';
-$dataDir = dirname($dataBestand);
-if (!is_dir($dataDir)) {
-    mkdir($dataDir, 0777, true);
-}
-
-$standaardData = [
-    'petitie_handtekeningen' => 12458,
-    'petitie_doel' => 15000,
-    'aanmeldingen' => [],
-    'ondertekenaars' => [],
-];
-$data = $standaardData;
-if (file_exists($dataBestand)) {
-    $inhoud = file_get_contents($dataBestand);
-    $data = array_merge($standaardData, json_decode($inhoud, true) ?? []);
-}
+require_once __DIR__ . '/../includes/db.php';
 
 $petitieBericht = '';
 $briefBericht = '';
@@ -26,18 +9,14 @@ $nieuwsBriefBericht = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $actie = $_POST['actie'] ?? '';
+    $db = getDb();
 
     if ($actie === 'petitie') {
         $naam = trim($_POST['naam'] ?? '');
         $email = trim($_POST['email'] ?? '');
         if ($naam !== '' && $email !== '') {
-            $data['petitie_handtekeningen']++;
-            $data['ondertekenaars'][] = [
-                'naam' => $naam,
-                'email' => $email,
-                'datum' => date('Y-m-d H:i:s'),
-            ];
-            file_put_contents($dataBestand, json_encode($data, JSON_PRETTY_PRINT));
+            $stmt = $db->prepare("INSERT INTO petities (naam, email) VALUES (:naam, :email)");
+            $stmt->execute([':naam' => $naam, ':email' => $email]);
             $petitieBericht = 'Bedankt voor je steun!';
         } else {
             $petitieBericht = 'Vul je naam en e-mailadres in.';
@@ -68,20 +47,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($actie === 'nieuwsbrief') {
         $nieuwsEmail = trim($_POST['nieuws_email'] ?? '');
         if ($nieuwsEmail !== '') {
-            $data['aanmeldingen'][] = [
-                'email' => $nieuwsEmail,
-                'datum' => date('Y-m-d H:i:s'),
-            ];
-            file_put_contents($dataBestand, json_encode($data, JSON_PRETTY_PRINT));
-            $nieuwsBriefBericht = 'Je bent aangemeld voor de nieuwsbrief!';
+            try {
+                $stmt = $db->prepare("INSERT INTO nieuwsbrieven (email) VALUES (:email)");
+                $stmt->execute([':email' => $nieuwsEmail]);
+                $nieuwsBriefBericht = 'Je bent aangemeld voor de nieuwsbrief!';
+            } catch (PDOException $e) {
+                $nieuwsBriefBericht = 'Dit e-mailadres is al aangemeld.';
+            }
         } else {
             $nieuwsBriefBericht = 'Vul een geldig e-mailadres in.';
         }
     }
 }
 
-$aantal = $data['petitie_handtekeningen'];
-$doel = $data['petitie_doel'];
+$db = getDb();
+$aantal = $db->query("SELECT COUNT(*) AS cnt FROM petities")->fetch()['cnt'] + 12458;
+$doel = 15000;
 $percentage = min(100, round($aantal / $doel * 100));
 ?>
 

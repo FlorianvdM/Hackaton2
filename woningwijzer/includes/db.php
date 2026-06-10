@@ -5,7 +5,7 @@
 // ============================================================
 
 // Instellingen — pas aan naar je lokale omgeving (bijv. XAMPP/Laragon)
-define('DB_HOST', 'localhost');
+define('DB_HOST', '127.0.0.1');
 define('DB_NAME', 'woningwijzer');
 define('DB_USER', 'root');
 define('DB_PASS', '');
