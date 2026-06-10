@@ -13,37 +13,37 @@ $rechten = [
         'icoon' => '🛡️',
         'titel' => 'Huurbescherming',
         'tekst' => 'Je huurcontract kan niet zomaar worden opgezegd door de verhuurder. Opzegging is alleen geldig in specifieke gevallen (eigen gebruik, slecht huurderschap). Tijdelijke contracten zijn na 2 jaar automatisch vast.',
-        'link' => '#',
+        'link' => 'https://www.rijksoverheid.nl/onderwerpen/woning-huren/vraag-en-antwoord/welke-mogelijkheden-heb-ik-als-huurder-om-mijn-huurcontract-op-te-zeggen',
     ],
     [
         'icoon' => '🔧',
         'titel' => 'Onderhoud & gebreken',
         'tekst' => 'De verhuurder is verantwoordelijk voor groot onderhoud. Weigert hij? Meld het bij de Huurcommissie of gemeentelijke handhaving. Bij ernstige gebreken kun je huurverlaging aanvragen.',
-        'link' => '#',
+        'link' => 'https://www.huurcommissie.nl/onderwerpen/onderhoud-en-gebreken',
     ],
     [
         'icoon' => '📈',
         'titel' => 'Huurverhoging aanvechten',
         'tekst' => 'De maximale huurverhoging voor sociale huur is wettelijk vastgesteld. In 2024: max. 5,8% voor zelfstandige woningen. Een hogere verhoging is aanvechtbaar via de Huurcommissie.',
-        'link' => '#',
+        'link' => 'bereken.php',
     ],
     [
         'icoon' => '💰',
         'titel' => 'Borg terugkrijgen',
         'tekst' => 'De verhuurder moet de borg terugbetalen na vertrek, tenzij er aantoonbare schade is. Normale slijtage telt niet. Conflict? Stap naar de Huurcommissie of de kantonrechter.',
-        'link' => '#',
+        'link' => 'https://www.juridischloket.nl/wonen-en-buren/huurwoning/borg-terugkrijgen/',
     ],
     [
         'icoon' => '⚖️',
         'titel' => 'Huurcommissie',
         'tekst' => 'De Huurcommissie behandelt geschillen over huurprijs, gebreken en servicekosten. Een procedure kost je slechts € 25 als huurder. Uitspraken zijn bindend voor de verhuurder.',
-        'link' => '#',
+        'link' => 'https://www.huurcommissie.nl/',
     ],
     [
         'icoon' => '📄',
         'titel' => 'Servicekosten',
         'tekst' => 'Verhuurders mogen alleen werkelijke kosten doorberekenen (gas, water, licht, schoonmaak). Je hebt recht op een jaarlijkse afrekening. Te veel betaald? Je krijgt het terug.',
-        'link' => '#',
+        'link' => 'https://www.rijksoverheid.nl/onderwerpen/huurprijs-en-servicekosten/servicekosten-en-nutsvoorzieningen',
     ],
 ];
 
@@ -114,7 +114,7 @@ $vragen = [
 
     <!-- FAQ -->
     <h2 class="font-display text-xl font-bold mb-4">Veelgestelde vragen</h2>
-    <div class="bg-white rounded-xl border border-gray-100 divide-y divide-gray-100" id="faq">
+    <div class="bg-white rounded-xl border border-gray-100 divide-y divide-gray-100 mb-8" id="faq">
         <?php foreach ($vragen as $i => $v): ?>
             <div class="faq-item">
                 <button onclick="wisselFaq(<?= $i ?>)"
@@ -127,6 +127,18 @@ $vragen = [
                 </div>
             </div>
         <?php endforeach; ?>
+    </div>
+
+    <!-- Extra CTA's voor onderlinge linking -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <a href="bereken.php" class="bg-white border border-gray-100 rounded-xl p-5 hover:shadow-md transition-shadow group">
+            <h4 class="font-display font-bold text-ink group-hover:text-oranje transition-colors mb-2">Check je huurprijs</h4>
+            <p class="text-sm text-gedempt">Gebruik onze huurcheck tool om te zien of je niet te veel betaalt voor je woning.</p>
+        </a>
+        <a href="zoeken.php" class="bg-white border border-gray-100 rounded-xl p-5 hover:shadow-md transition-shadow group">
+            <h4 class="font-display font-bold text-ink group-hover:text-oranje transition-colors mb-2">Zoek een nieuwe woning</h4>
+            <p class="text-sm text-gedempt">Bekijk het actuele aanbod van sociale en vrije sector huurwoningen.</p>
+        </a>
     </div>
 
 </div>

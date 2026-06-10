@@ -186,6 +186,9 @@ $woningen = array_filter($alleWoningen, function ($w) use ($filterType, $filterS
                         <span class="<?= $badgeKleur ?> text-xs font-semibold px-2 py-0.5 rounded">
                             <?= $catLabel ?>
                         </span>
+                        <?php if ($w['categorie'] === 'sociaal'): ?>
+                            <a href="rechten.php" class="text-[10px] text-oranje hover:underline ml-2">Ken je rechten →</a>
+                        <?php endif; ?>
 
                         <h3 class="font-display font-semibold text-base mt-2 mb-1 text-ink capitalize">
                             <?= htmlspecialchars($w['type']) ?> — <?= ucfirst($w['stad']) ?>

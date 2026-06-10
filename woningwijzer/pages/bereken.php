@@ -67,7 +67,12 @@ require_once __DIR__ . '/../includes/header.php';
             <div class="bg-ink rounded-xl p-4 mt-5 text-white">
                 <p class="text-xs text-white/50 uppercase tracking-wide">Maximale hypotheek</p>
                 <p class="font-display text-3xl font-bold text-oranje my-1" id="hyp-uitkomst">€ 176.400</p>
-                <p class="text-xs text-white/50" id="hyp-toelichting">Maandlast ca. € 876 · 4.2× jaarsalaris</p>
+                <div class="flex justify-between items-end">
+                    <p class="text-xs text-white/50" id="hyp-toelichting">Maandlast ca. € 876 · 4.2× jaarsalaris</p>
+                    <a href="zoeken.php?categorie=koop" class="text-xs bg-white/10 hover:bg-white/20 text-white px-2 py-1 rounded transition-colors">
+                        Zoek koopwoningen →
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -122,7 +127,12 @@ require_once __DIR__ . '/../includes/header.php';
             <div class="bg-ink rounded-xl p-4 mt-5 text-white">
                 <p class="text-xs text-white/50 uppercase tracking-wide">Oordeel</p>
                 <p class="font-display text-3xl font-bold my-1" id="huur-oordeel">Redelijk</p>
-                <p class="text-xs text-white/50" id="huur-toelichting">Vergelijkbare woningen: €950–€1.200/mnd</p>
+                <div class="flex justify-between items-end">
+                    <p class="text-xs text-white/50" id="huur-toelichting">Vergelijkbare woningen: €950–€1.200/mnd</p>
+                    <a href="rechten.php" class="text-xs bg-white/10 hover:bg-white/20 text-white px-2 py-1 rounded transition-colors">
+                        Bekijk je rechten →
+                    </a>
+                </div>
             </div>
         </div>
 
