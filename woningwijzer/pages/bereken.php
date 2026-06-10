@@ -17,10 +17,10 @@ require_once __DIR__ . '/../includes/header.php';
     </p>
 
     <!-- Tab navigatie -->
-    <div class="flex gap-1 border-b border-gray-200 mb-8 overflow-x-auto -mx-4 px-4 scrollbar-hide" id="tabs">
+    <div class="flex gap-1 border-b border-gray-200 dark:border-gray-700 mb-8 overflow-x-auto -mx-4 px-4 scrollbar-hide" id="tabs">
         <button onclick="wisselTab('hypotheek')"
                 id="tab-hypotheek"
-                class="tab-knop actief-tab px-4 py-2.5 text-sm font-medium rounded-t-lg border-b-2 transition-colors shrink-0">
+                class="tab-knop actief-tab px-4 py-2.5 text-sm font-medium rounded-t-lg border-b-2 transition-colors shrink-0 dark:text-gray-100">
             🏦 Hypotheek
         </button>
         <button onclick="wisselTab('huurcheck')"
@@ -44,22 +44,22 @@ require_once __DIR__ . '/../includes/header.php';
                 <div>
                     <label class="block text-xs font-semibold uppercase tracking-wide text-gedempt dark:text-gray-400 mb-1">Bruto jaarsalaris (€)</label>
                     <input type="number" id="hyp-sal" value="42000" oninput="berekenHypotheek()"
-                           class="w-full border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100">
+                           class="w-full border border-gray-200 dark:border-gray-600 dark:bg-gray-800 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold uppercase tracking-wide text-gedempt dark:text-gray-400 mb-1">Partner salaris (€) — optioneel</label>
                     <input type="number" id="hyp-sal2" value="0" oninput="berekenHypotheek()"
-                           class="w-full border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100">
+                           class="w-full border border-gray-200 dark:border-gray-600 dark:bg-gray-800 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold uppercase tracking-wide text-gedempt dark:text-gray-400 mb-1">Rentevoet (%)</label>
                     <input type="number" id="hyp-rente" value="4.3" step="0.1" oninput="berekenHypotheek()"
-                           class="w-full border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100">
+                           class="w-full border border-gray-200 dark:border-gray-600 dark:bg-gray-800 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold uppercase tracking-wide text-gedempt dark:text-gray-400 mb-1">Looptijd (jaren)</label>
                     <input type="number" id="hyp-looptijd" value="30" min="10" max="30" oninput="berekenHypotheek()"
-                           class="w-full border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100">
+                           class="w-full border border-gray-200 dark:border-gray-600 dark:bg-gray-800 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100">
                 </div>
             </div>
 
@@ -80,10 +80,10 @@ require_once __DIR__ . '/../includes/header.php';
             <h3 class="font-display font-semibold text-base">Handige aandachtspunten</h3>
             <?php
             $tips = [
-                ['kleur' => 'bg-green-100 text-green-800', 'titel' => 'NHG-garantie', 'tekst' => 'Bij een hypotheek onder € 435.000 kom je mogelijk in aanmerking voor de Nationale Hypotheek Garantie. Dit verlaagt je rente met 0,4–0,6%.'],
-                ['kleur' => 'bg-orange-100 text-orange-800', 'titel' => 'Eigen inbreng', 'tekst' => 'Banken financieren maximaal 100% van de woningwaarde. Bijkomende kosten (2–5%) betaal je zelf: notaris, overdrachtsbelasting, taxatie.'],
-                ['kleur' => 'bg-blue-100 text-blue-800', 'titel' => 'Startersvrijstelling', 'tekst' => 'Kopers jonger dan 35 jaar betalen geen overdrachtsbelasting bij woningen onder € 510.000. Dat scheelt al snel € 10.000+.'],
-                ['kleur' => 'bg-red-100 text-red-800', 'titel' => 'Schulden wegen mee', 'tekst' => 'Studentenlening, auto, creditcard — al je schulden verlagen je maximale hypotheek. Plan dit mee in je berekening.'],
+                ['kleur' => 'bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200', 'titel' => 'NHG-garantie', 'tekst' => 'Bij een hypotheek onder € 435.000 kom je mogelijk in aanmerking voor de Nationale Hypotheek Garantie. Dit verlaagt je rente met 0,4–0,6%.'],
+                ['kleur' => 'bg-orange-100 dark:bg-orange-900/50 text-orange-800 dark:text-orange-200', 'titel' => 'Eigen inbreng', 'tekst' => 'Banken financieren maximaal 100% van de woningwaarde. Bijkomende kosten (2–5%) betaal je zelf: notaris, overdrachtsbelasting, taxatie.'],
+                ['kleur' => 'bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200', 'titel' => 'Startersvrijstelling', 'tekst' => 'Kopers jonger dan 35 jaar betalen geen overdrachtsbelasting bij woningen onder € 510.000. Dat scheelt al snel € 10.000+.'],
+                ['kleur' => 'bg-red-100 dark:bg-red-900/50 text-red-800 dark:text-red-200', 'titel' => 'Schulden wegen mee', 'tekst' => 'Studentenlening, auto, creditcard — al je schulden verlagen je maximale hypotheek. Plan dit mee in je berekening.'],
             ];
             foreach ($tips as $tip):
                 ?>
@@ -105,17 +105,17 @@ require_once __DIR__ . '/../includes/header.php';
                 <div>
                     <label class="block text-xs font-semibold uppercase tracking-wide text-gedempt dark:text-gray-400 mb-1">Huidige maandhuur (€)</label>
                     <input type="number" id="huur-bedrag" value="1100" oninput="berekenHuurcheck()"
-                           class="w-full border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100">
+                           class="w-full border border-gray-200 dark:border-gray-600 dark:bg-gray-800 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold uppercase tracking-wide text-gedempt dark:text-gray-400 mb-1">Oppervlakte (m²)</label>
                     <input type="number" id="huur-m2" value="65" oninput="berekenHuurcheck()"
-                           class="w-full border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100">
+                           class="w-full border border-gray-200 dark:border-gray-600 dark:bg-gray-800 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold uppercase tracking-wide text-gedempt dark:text-gray-400 mb-1">Gemeente</label>
                     <select id="huur-stad" onchange="berekenHuurcheck()"
-                            class="w-full border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100">
+                            class="w-full border border-gray-200 dark:border-gray-600 dark:bg-gray-800 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100">
                         <option value="1.4">Amsterdam</option>
                         <option value="1.25">Utrecht</option>
                         <option value="1.15">Den Haag</option>
@@ -137,15 +137,15 @@ require_once __DIR__ . '/../includes/header.php';
         </div>
 
         <div class="space-y-3">
-            <div class="bg-blue-50 border border-blue-100 rounded-xl p-4 text-sm text-blue-900">
+            <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 rounded-xl p-4 text-sm text-blue-900 dark:text-blue-100">
                 <p class="font-semibold mb-1">💡 Huurcommissie</p>
                 <p>Betaal je te veel voor een sociale huurwoning? Je kunt gratis een procedure starten. Zij beoordelen of de huur verlaagd moet worden.</p>
             </div>
-            <div class="bg-orange-50 border border-orange-100 rounded-xl p-4 text-sm text-orange-900">
+            <div class="bg-orange-50 dark:bg-orange-900/20 border border-orange-100 dark:border-orange-800 rounded-xl p-4 text-sm text-orange-900 dark:text-orange-100">
                 <p class="font-semibold mb-1">📋 Puntenstelsel</p>
                 <p>Woningen onder de liberalisatiegrens worden beoordeeld via een puntenstelsel. De maximale huurprijs hangt af van kwaliteitspunten voor oppervlak, isolatie, keuken en meer.</p>
             </div>
-            <div class="bg-green-50 border border-green-100 rounded-xl p-4 text-sm text-green-900">
+            <div class="bg-green-50 dark:bg-green-900/20 border border-green-100 dark:border-green-800 rounded-xl p-4 text-sm text-green-900 dark:text-green-100">
                 <p class="font-semibold mb-1">🆕 Wet betaalbare huur (2024)</p>
                 <p>Woningen met ≤ 186 punten vallen nu onder het puntenstelsel, ook al werd er meer dan € 879 gevraagd. Huurders kunnen dit aanvechten.</p>
             </div>
@@ -160,17 +160,17 @@ require_once __DIR__ . '/../includes/header.php';
                 <div>
                     <label class="block text-xs font-semibold uppercase tracking-wide text-gedempt dark:text-gray-400 mb-1">Maandhuur (€)</label>
                     <input type="number" id="ts-huur" value="800" oninput="berekenToeslag()"
-                           class="w-full border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100">
+                           class="w-full border border-gray-200 dark:border-gray-600 dark:bg-gray-800 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold uppercase tracking-wide text-gedempt dark:text-gray-400 mb-1">Bruto jaarinkomen (€)</label>
                     <input type="number" id="ts-ink" value="26000" oninput="berekenToeslag()"
-                           class="w-full border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100">
+                           class="w-full border border-gray-200 dark:border-gray-600 dark:bg-gray-800 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold uppercase tracking-wide text-gedempt dark:text-gray-400 mb-1">Huishoudsituatie</label>
                     <select id="ts-hh" onchange="berekenToeslag()"
-                            class="w-full border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100">
+                            class="w-full border border-gray-200 dark:border-gray-600 dark:bg-gray-800 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100">
                         <option value="1">Eenpersoonshuishouden</option>
                         <option value="2">Meerpersoons huishouden</option>
                     </select>
@@ -184,18 +184,18 @@ require_once __DIR__ . '/../includes/header.php';
         </div>
 
         <div class="space-y-4">
-            <div class="bg-green-50 border border-green-100 rounded-xl p-4 text-sm text-green-900">
+            <div class="bg-green-50 dark:bg-green-900/20 border border-green-100 dark:border-green-800 rounded-xl p-4 text-sm text-green-900 dark:text-green-100">
                 <p class="font-semibold mb-1">✅ Direct aanvragen</p>
                 <p>Huurtoeslag vraag je aan via de Belastingdienst met DigiD. Je ontvangt toeslag zolang je huur onder de grens ligt en je inkomen voldoet aan de norm.</p>
             </div>
             <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-4">
                 <h4 class="font-semibold text-sm mb-3">Inkomensgrenzen 2024</h4>
                 <table class="w-full text-sm">
-                    <tr class="border-b border-gray-100">
+                    <tr class="border-b border-gray-100 dark:border-gray-700">
                         <td class="py-2 text-gedempt dark:text-gray-400">Eenpersoonshuishouden</td>
                         <td class="py-2 font-semibold text-right">€ 31.340</td>
                     </tr>
-                    <tr class="border-b border-gray-100">
+                    <tr class="border-b border-gray-100 dark:border-gray-700">
                         <td class="py-2 text-gedempt dark:text-gray-400">Meerpersoons huishouden</td>
                         <td class="py-2 font-semibold text-right">€ 42.436</td>
                     </tr>
@@ -222,7 +222,7 @@ function wisselTab(naam) {
     document.getElementById('paneel-' + naam).classList.remove('hidden');
     const actief = document.getElementById('tab-' + naam);
     actief.classList.remove('text-gedempt dark:text-gray-400', 'border-transparent');
-    actief.classList.add('border-b-2', 'border-oranje', 'text-ink');
+    actief.classList.add('border-b-2', 'border-oranje', 'text-ink', 'dark:text-gray-100');
 }
 wisselTab('hypotheek');
 
