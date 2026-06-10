@@ -143,7 +143,7 @@ include 'woningwijzer/includes/header.php';
                     'icoon' => '🧮',
                     'titel' => 'Hypotheek & huurcheck',
                     'tekst' => 'Bereken je maximale hypotheek, check of je huur redelijk is en ontdek je recht op huurtoeslag.',
-                    'link' => 'woningwijzer/pages/rekenen.php',
+                    'link' => 'woningwijzer/pages/bereken.php',
                     'kleur' => 'bg-green-50',
                 ],
                 [

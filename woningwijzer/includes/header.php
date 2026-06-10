@@ -57,7 +57,7 @@ $huidigePagina = basename($_SERVER['PHP_SELF'], '.php');
             $navItems = [
                 'index' => ['label' => 'Home', 'href' => 'index.php'],
                 'zoeken' => ['label' => 'Zoeken', 'href' => 'woningwijzer/pages/zoeken.php'],
-                'rekenen' => ['label' => 'Rekenen', 'href' => 'woningwijzer/pages/rekenen.php'],
+                'bereken' => ['label' => 'Bereken', 'href' => 'woningwijzer/pages/bereken.php'],
                 'rechten' => ['label' => 'Rechten', 'href' => 'woningwijzer/pages/rechten.php'],
                 'nieuws' => ['label' => 'Nieuws', 'href' => 'woningwijzer/pages/nieuws.php'],
                 'actie' => ['label' => 'Actie', 'href' => 'woningwijzer/pages/actie.php'],

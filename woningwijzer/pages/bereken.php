@@ -1,10 +1,10 @@
 <?php
 // ============================================================
-// pages/rekenen.php — Berekeningstools
+// pages/bereken.php — Berekeningstools
 // Eerstejaars: HTML forms, JavaScript berekeningen
 // ============================================================
 
-$paginaTitel = 'Rekenen';
+$paginaTitel = 'Bereken';
 require_once __DIR__ . '/../includes/header.php';
 ?>
 
