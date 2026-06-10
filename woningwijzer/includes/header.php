@@ -47,7 +47,7 @@ $huidigePagina = basename($_SERVER['PHP_SELF'], '.php');
     <div class="max-w-6xl mx-auto px-4 h-16 flex items-center gap-8">
 
         <!-- Logo -->
-        <a href="/index.php" class="font-display font-bold text-xl text-white flex items-center gap-2 shrink-0">
+        <a href="index.php" class="font-display font-bold text-xl text-white flex items-center gap-2 shrink-0">
             🏠 Woning<span class="text-oranje">Wijzer</span>
         </a>
 
@@ -55,13 +55,13 @@ $huidigePagina = basename($_SERVER['PHP_SELF'], '.php');
         <ul class="flex items-center gap-1 ml-auto">
             <?php
             $navItems = [
-                'index' => ['label' => 'Home', 'href' => '/index.php'],
-                'zoeken' => ['label' => 'Zoeken', 'href' => '/pages/zoeken.php'],
-                'rekenen' => ['label' => 'Rekenen', 'href' => '/pages/rekenen.php'],
-                'rechten' => ['label' => 'Rechten', 'href' => '/pages/rechten.php'],
-                'nieuws' => ['label' => 'Nieuws', 'href' => '/pages/nieuws.php'],
-                'actie' => ['label' => 'Actie', 'href' => '/pages/actie.php'],
-                'meldingen' => ['label' => 'Meldingen', 'href' => '/pages/meldingen.php'],
+                'index' => ['label' => 'Home', 'href' => 'index.php'],
+                'zoeken' => ['label' => 'Zoeken', 'href' => 'woningwijzer/pages/zoeken.php'],
+                'rekenen' => ['label' => 'Rekenen', 'href' => 'woningwijzer/pages/rekenen.php'],
+                'rechten' => ['label' => 'Rechten', 'href' => 'woningwijzer/pages/rechten.php'],
+                'nieuws' => ['label' => 'Nieuws', 'href' => 'woningwijzer/pages/nieuws.php'],
+                'actie' => ['label' => 'Actie', 'href' => 'woningwijzer/pages/actie.php'],
+                'meldingen' => ['label' => 'Meldingen', 'href' => 'woningwijzer/pages/meldingen.php'],
             ];
             foreach ($navItems as $id => $item):
                 $actief = ($huidigePagina === $id);
@@ -78,7 +78,7 @@ $huidigePagina = basename($_SERVER['PHP_SELF'], '.php');
             <?php endforeach; ?>
 
             <li class="ml-2">
-                <a href="/pages/actie.php"
+                <a href="woningwijzer/pages/actie.php"
                    class="bg-oranje hover:bg-orange-700 text-white px-4 py-2 rounded-md text-sm font-semibold transition-colors">
                     Doe mee
                 </a>

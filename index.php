@@ -4,10 +4,10 @@
 // Eerstejaars: HTML structuur, Tailwind CSS, JS interactiviteit
 // ============================================================
 
-require_once '../includes/db.php'; // database connectie
+require_once 'woningwijzer/includes/db.php'; // database connectie
 
 $paginaTitel = 'Home';
-include 'includes/header.php';
+include 'woningwijzer/includes/header.php';
 
 
 ?>
@@ -57,7 +57,7 @@ include 'includes/header.php';
         </div>
 
         <!-- Snelzoek -->
-        <form action="/pages/zoeken.php" method="GET"
+        <form action="woningwijzer/pages/zoeken.php" method="GET"
               class="bg-white rounded-xl p-3 flex flex-wrap gap-2 max-w-2xl mx-auto">
 
             <select name="type" class="flex-1 min-w-[120px] border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-ink">
@@ -136,42 +136,42 @@ include 'includes/header.php';
                     'icoon' => '🔍',
                     'titel' => 'Woning zoeken',
                     'tekst' => 'Filter op type, gemeente, huur of koop en budget. Overzicht van alle beschikbare woningen.',
-                    'link' => '/pages/zoeken.php',
+                    'link' => 'woningwijzer/pages/zoeken.php',
                     'kleur' => 'bg-blue-50',
                 ],
                 [
                     'icoon' => '🧮',
                     'titel' => 'Hypotheek & huurcheck',
                     'tekst' => 'Bereken je maximale hypotheek, check of je huur redelijk is en ontdek je recht op huurtoeslag.',
-                    'link' => '/pages/rekenen.php',
+                    'link' => 'woningwijzer/pages/rekenen.php',
                     'kleur' => 'bg-green-50',
                 ],
                 [
                     'icoon' => '⚖️',
                     'titel' => 'Ken je rechten',
                     'tekst' => 'Als huurder heb je meer rechten dan je denkt. Lees alles over huurbescherming en huurcommissie.',
-                    'link' => '/pages/rechten.php',
+                    'link' => 'woningwijzer/pages/rechten.php',
                     'kleur' => 'bg-orange-50',
                 ],
                 [
                     'icoon' => '📰',
                     'titel' => 'Nieuws & beleid',
                     'tekst' => 'Blijf op de hoogte van de laatste wetswijzigingen, beleid en ontwikkelingen op de woningmarkt.',
-                    'link' => '/pages/nieuws.php',
+                    'link' => 'woningwijzer/pages/nieuws.php',
                     'kleur' => 'bg-purple-50',
                 ],
                 [
                     'icoon' => '📢',
                     'titel' => 'Doe mee & actie',
                     'tekst' => 'Teken de petitie, schrijf je volksvertegenwoordiger en meld misstanden op de woningmarkt.',
-                    'link' => '/pages/actie.php',
+                    'link' => 'woningwijzer/pages/actie.php',
                     'kleur' => 'bg-red-50',
                 ],
                 [
                     'icoon' => '🔔',
                     'titel' => 'Meldingen',
                     'tekst' => 'Beheer je meldingen van misstanden, discriminatie of illegale praktijken. CRUD-overzicht.',
-                    'link' => '/pages/meldingen.php',
+                    'link' => 'woningwijzer/pages/meldingen.php',
                     'kleur' => 'bg-yellow-50',
                 ],
             ];
@@ -191,4 +191,4 @@ include 'includes/header.php';
     </div>
 </section>
 
-<?php require_once __DIR__ . '/includes/footer.php'; ?>
+<?php require_once 'woningwijzer/includes/footer.php'; ?>
