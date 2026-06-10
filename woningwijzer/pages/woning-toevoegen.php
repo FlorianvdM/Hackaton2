@@ -38,6 +38,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($omschrijving))
         $fouten[] = 'Schrijf een korte omschrijving.';
 
+    // Geo-coordinaten ophalen via PDOK Locatieserver (gratis, open data)
+    $lat = null;
+    $lng = null;
+    if (empty($fouten)) {
+        $zoekterm = rawurlencode($omschrijving . ', ' . $stad);
+        $pdokUrl = "https://geodata.nationaalgeoregister.nl/locatieserver/v3/free?q=$zoekterm&rows=1";
+        $ctx = stream_context_create(['http' => ['timeout' => 3]]);
+        $resp = @file_get_contents($pdokUrl, false, $ctx);
+        if ($resp) {
+            $pdok = json_decode($resp, true);
+            if (!empty($pdok['response']['docs'][0])) {
+                $doc = $pdok['response']['docs'][0];
+                $lat = $doc['lat'] ?? null;
+                $lng = $doc['lon'] ?? null;
+            }
+        }
+    }
+
     // Opslaan als geen fouten (CREATE — INSERT in database)
     if (empty($fouten)) {
         /*
@@ -45,8 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          *
          * $db   = getDb();
          * $stmt = $db->prepare("
-         *     INSERT INTO woningen (type, stad, categorie, prijs, kamers, oppervlak, omschrijving, aangemaakt_op)
-         *     VALUES (:type, :stad, :categorie, :prijs, :kamers, :oppervlak, :omschrijving, NOW())
+         *     INSERT INTO woningen (type, stad, categorie, prijs, kamers, oppervlak, omschrijving, lat, lng, aangemaakt_op)
+         *     VALUES (:type, :stad, :categorie, :prijs, :kamers, :oppervlak, :omschrijving, :lat, :lng, NOW())
          * ");
          * $stmt->execute([
          *     ':type'         => $type,
@@ -56,6 +74,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          *     ':kamers'       => $kamers,
          *     ':oppervlak'    => $oppervlak,
          *     ':omschrijving' => $omschrijving,
+         *     ':lat'          => $lat,
+         *     ':lng'          => $lng,
          * ]);
          */
 
@@ -74,9 +94,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h1 class="font-display text-3xl font-bold mb-6">Woning toevoegen</h1>
 
     <?php if ($succes): ?>
-        <div class="bg-green-50 border border-green-200 text-green-800 rounded-xl p-4 mb-6 flex items-center gap-3">
-            ✅ <span class="font-semibold">Woning succesvol toegevoegd!</span>
-            <a href="zoeken.php" class="ml-auto text-sm underline">Bekijk overzicht</a>
+        <div class="bg-green-50 border border-green-200 text-green-800 rounded-xl p-4 mb-6 space-y-1">
+            <div class="flex items-center gap-3">
+                ✅ <span class="font-semibold">Woning succesvol toegevoegd!</span>
+                <a href="zoeken.php" class="ml-auto text-sm underline">Bekijk overzicht</a>
+            </div>
+            <?php if ($lat && $lng): ?>
+                <p class="text-xs text-green-600 ml-7">📍 Locatie bepaald via <strong>PDOK Locatieserver</strong> (lat: <?= $lat ?>, lng: <?= $lng ?>)</p>
+            <?php endif; ?>
         </div>
     <?php endif; ?>
 

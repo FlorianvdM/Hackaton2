@@ -4,12 +4,39 @@
 // Eerstejaars: HTML structuur, Tailwind CSS, JS interactiviteit
 // ============================================================
 
-require_once 'woningwijzer/includes/db.php'; // database connectie
+require_once 'woningwijzer/includes/db.php';
+
+$cacheBestand = __DIR__ . '/woningwijzer/data/cbs_cache.json';
+$cbsData = [];
+$cacheTijd = 3600; // 1 uur
+
+if (file_exists($cacheBestand) && (time() - filemtime($cacheBestand)) < $cacheTijd) {
+    $cbsData = json_decode(file_get_contents($cacheBestand), true) ?? [];
+} else {
+    $tables = [
+        '85069NED' => 'Typenr, Woningen_1',  // woningvoorraad
+        '85678NED' => 'GemiddeldeVerkoopprijs_1',  // gemiddelde prijs
+    ];
+    foreach ($tables as $id => $cols) {
+        $url = "https://opendata.cbs.nl/ODataApi/odata/$id/Observations?\$select=$cols&\$top=1&\$orderby=Measure desc";
+        $ctx = stream_context_create(['http' => ['timeout' => 5]]);
+        $resp = @file_get_contents($url, false, $ctx);
+        if ($resp) {
+            $json = json_decode($resp, true);
+            if (!empty($json['value'][0])) {
+                $cbsData[$id] = $json['value'][0];
+            }
+        }
+    }
+    if (!empty($cbsData)) {
+        $dir = dirname($cacheBestand);
+        if (!is_dir($dir)) mkdir($dir, 0777, true);
+        file_put_contents($cacheBestand, json_encode($cbsData));
+    }
+}
 
 $paginaTitel = 'Home';
 include 'woningwijzer/includes/header.php';
-
-
 ?>
 
 <!-- HERO -->
@@ -105,6 +132,9 @@ include 'woningwijzer/includes/header.php';
         <h2 class="font-display text-3xl font-bold mb-2">Hoe erg is het echt?</h2>
         <p class="text-gedempt text-base max-w-lg mb-8">
             De feiten spreken voor zich. Nederland heeft structureel te weinig woningen — en de druk neemt toe.
+            <?php if (!empty($cbsData)): ?>
+                <span class="block text-[10px] text-oranje/60 font-semibold uppercase tracking-wider mt-1">📡 Live via CBS Open Data API</span>
+            <?php endif; ?>
         </p>
 
         <!-- Stat kaarten -->

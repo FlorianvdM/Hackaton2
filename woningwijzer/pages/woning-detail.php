@@ -6,14 +6,14 @@ require_once __DIR__ . '/../includes/db.php';
 $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
 $demoWoningen = [
-    1 => ['type' => 'appartement', 'stad' => 'amsterdam', 'categorie' => 'vrij', 'prijs' => 1650, 'kamers' => 2, 'oppervlak' => 58, 'omschrijving' => 'Licht appartement in de Jordaan met balkon.'],
-    2 => ['type' => 'woning', 'stad' => 'rotterdam', 'categorie' => 'koop', 'prijs' => 285000, 'kamers' => 4, 'oppervlak' => 102, 'omschrijving' => 'Ruime rijtjeswoning met tuin in Kralingen.'],
-    3 => ['type' => 'studio', 'stad' => 'utrecht', 'categorie' => 'vrij', 'prijs' => 1100, 'kamers' => 1, 'oppervlak' => 32, 'omschrijving' => 'Moderne studio nabij Centraal Station.'],
-    4 => ['type' => 'appartement', 'stad' => 'denhaag', 'categorie' => 'sociaal', 'prijs' => 760, 'kamers' => 3, 'oppervlak' => 75, 'omschrijving' => 'Sociale huurwoning, inschrijftijd vereist.'],
-    5 => ['type' => 'kamer', 'stad' => 'groningen', 'categorie' => 'vrij', 'prijs' => 620, 'kamers' => 1, 'oppervlak' => 18, 'omschrijving' => 'Gemeubileerde kamer in studentenhuis centrum.'],
-    6 => ['type' => 'woning', 'stad' => 'eindhoven', 'categorie' => 'koop', 'prijs' => 340000, 'kamers' => 5, 'oppervlak' => 130, 'omschrijving' => 'Vrijstaande woning met garage en grote tuin.'],
-    7 => ['type' => 'appartement', 'stad' => 'amsterdam', 'categorie' => 'koop', 'prijs' => 425000, 'kamers' => 2, 'oppervlak' => 64, 'omschrijving' => 'Instapklaar appartement in De Pijp.'],
-    8 => ['type' => 'studio', 'stad' => 'rotterdam', 'categorie' => 'vrij', 'prijs' => 950, 'kamers' => 1, 'oppervlak' => 28, 'omschrijving' => 'Gezellige studio met uitzicht op de Maas.'],
+    1 => ['type' => 'appartement', 'stad' => 'amsterdam',   'categorie' => 'vrij',    'prijs' => 1650,  'kamers' => 2, 'oppervlak' => 58,  'lat' => 52.368, 'lng' => 4.885,  'omschrijving' => 'Licht appartement in de Jordaan met balkon.'],
+    2 => ['type' => 'woning',      'stad' => 'rotterdam',   'categorie' => 'koop',    'prijs' => 285000,'kamers' => 4, 'oppervlak' => 102, 'lat' => 51.927, 'lng' => 4.505,  'omschrijving' => 'Ruime rijtjeswoning met tuin in Kralingen.'],
+    3 => ['type' => 'studio',      'stad' => 'utrecht',     'categorie' => 'vrij',    'prijs' => 1100,  'kamers' => 1, 'oppervlak' => 32,  'lat' => 52.090, 'lng' => 5.117,  'omschrijving' => 'Moderne studio nabij Centraal Station.'],
+    4 => ['type' => 'appartement', 'stad' => 'denhaag',     'categorie' => 'sociaal', 'prijs' => 760,   'kamers' => 3, 'oppervlak' => 75,  'lat' => 52.072, 'lng' => 4.306,  'omschrijving' => 'Sociale huurwoning, inschrijftijd vereist.'],
+    5 => ['type' => 'kamer',       'stad' => 'groningen',   'categorie' => 'vrij',    'prijs' => 620,   'kamers' => 1, 'oppervlak' => 18,  'lat' => 53.220, 'lng' => 6.565,  'omschrijving' => 'Gemeubileerde kamer in studentenhuis centrum.'],
+    6 => ['type' => 'woning',      'stad' => 'eindhoven',   'categorie' => 'koop',    'prijs' => 340000,'kamers' => 5, 'oppervlak' => 130, 'lat' => 51.442, 'lng' => 5.469,  'omschrijving' => 'Vrijstaande woning met garage en grote tuin.'],
+    7 => ['type' => 'appartement', 'stad' => 'amsterdam',   'categorie' => 'koop',    'prijs' => 425000,'kamers' => 2, 'oppervlak' => 64,  'lat' => 52.354, 'lng' => 4.893,  'omschrijving' => 'Instapklaar appartement in De Pijp.'],
+    8 => ['type' => 'studio',      'stad' => 'rotterdam',   'categorie' => 'vrij',    'prijs' => 950,   'kamers' => 1, 'oppervlak' => 28,  'lat' => 51.907, 'lng' => 4.487,  'omschrijving' => 'Gezellige studio met uitzicht op de Maas.'],
 ];
 
 $woning = $demoWoningen[$id] ?? null;
@@ -92,8 +92,39 @@ $woning = $demoWoningen[$id] ?? null;
                 </div>
             </div>
         </div>
+
+        <div class="mt-6 bg-white rounded-xl border border-gray-100 overflow-hidden p-6">
+            <h3 class="font-display font-semibold text-base mb-4">📍 Locatie</h3>
+            <div id="detail-kaart" style="height: 300px;" class="rounded-xl border border-gray-100"></div>
+        </div>
     <?php endif; ?>
 
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var woning = <?= json_encode($woning, JSON_UNESCAPED_UNICODE) ?>;
+    if (!woning) return;
+
+    var kaart = L.map('detail-kaart').setView([woning.lat, woning.lng], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '&copy; OpenStreetMap'
+    }).addTo(kaart);
+
+    var prijs = woning.categorie === 'koop'
+        ? '€ ' + Number(woning.prijs).toLocaleString('nl-NL')
+        : '€ ' + woning.prijs + '/mnd';
+
+    L.marker([woning.lat, woning.lng]).addTo(kaart)
+        .bindPopup(
+            '<strong>' + woning.type.charAt(0).toUpperCase() + woning.type.slice(1) + '</strong><br>' +
+            'Prijs: ' + prijs + '<br>' +
+            woning.omschrijving
+        )
+        .openPopup();
+});
+</script>
 
 <?php require_once __DIR__ . '/../includes/footer.php'; ?>

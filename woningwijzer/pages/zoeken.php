@@ -49,14 +49,14 @@ $filterBudget = !empty($_GET['budget']) ? (int) $_GET['budget'] : 0;
 
 // Demo-data (vervangt database zolang die niet is ingericht)
 $alleWoningen = [
-    ['id' => 1, 'type' => 'appartement', 'stad' => 'amsterdam', 'categorie' => 'vrij', 'prijs' => 1650, 'kamers' => 2, 'oppervlak' => 58, 'omschrijving' => 'Licht appartement in de Jordaan met balkon.'],
-    ['id' => 2, 'type' => 'woning', 'stad' => 'rotterdam', 'categorie' => 'koop', 'prijs' => 285000, 'kamers' => 4, 'oppervlak' => 102, 'omschrijving' => 'Ruime rijtjeswoning met tuin in Kralingen.'],
-    ['id' => 3, 'type' => 'studio', 'stad' => 'utrecht', 'categorie' => 'vrij', 'prijs' => 1100, 'kamers' => 1, 'oppervlak' => 32, 'omschrijving' => 'Moderne studio nabij Centraal Station.'],
-    ['id' => 4, 'type' => 'appartement', 'stad' => 'denhaag', 'categorie' => 'sociaal', 'prijs' => 760, 'kamers' => 3, 'oppervlak' => 75, 'omschrijving' => 'Sociale huurwoning, inschrijftijd vereist.'],
-    ['id' => 5, 'type' => 'kamer', 'stad' => 'groningen', 'categorie' => 'vrij', 'prijs' => 620, 'kamers' => 1, 'oppervlak' => 18, 'omschrijving' => 'Gemeubileerde kamer in studentenhuis centrum.'],
-    ['id' => 6, 'type' => 'woning', 'stad' => 'eindhoven', 'categorie' => 'koop', 'prijs' => 340000, 'kamers' => 5, 'oppervlak' => 130, 'omschrijving' => 'Vrijstaande woning met garage en grote tuin.'],
-    ['id' => 7, 'type' => 'appartement', 'stad' => 'amsterdam', 'categorie' => 'koop', 'prijs' => 425000, 'kamers' => 2, 'oppervlak' => 64, 'omschrijving' => 'Instapklaar appartement in De Pijp.'],
-    ['id' => 8, 'type' => 'studio', 'stad' => 'rotterdam', 'categorie' => 'vrij', 'prijs' => 950, 'kamers' => 1, 'oppervlak' => 28, 'omschrijving' => 'Gezellige studio met uitzicht op de Maas.'],
+    ['id' => 1, 'type' => 'appartement', 'stad' => 'amsterdam',   'categorie' => 'vrij',    'prijs' => 1650,  'kamers' => 2, 'oppervlak' => 58,  'lat' => 52.368, 'lng' => 4.885,  'omschrijving' => 'Licht appartement in de Jordaan met balkon.'],
+    ['id' => 2, 'type' => 'woning',      'stad' => 'rotterdam',   'categorie' => 'koop',    'prijs' => 285000,'kamers' => 4, 'oppervlak' => 102, 'lat' => 51.927, 'lng' => 4.505,  'omschrijving' => 'Ruime rijtjeswoning met tuin in Kralingen.'],
+    ['id' => 3, 'type' => 'studio',      'stad' => 'utrecht',     'categorie' => 'vrij',    'prijs' => 1100,  'kamers' => 1, 'oppervlak' => 32,  'lat' => 52.090, 'lng' => 5.117,  'omschrijving' => 'Moderne studio nabij Centraal Station.'],
+    ['id' => 4, 'type' => 'appartement', 'stad' => 'denhaag',     'categorie' => 'sociaal', 'prijs' => 760,   'kamers' => 3, 'oppervlak' => 75,  'lat' => 52.072, 'lng' => 4.306,  'omschrijving' => 'Sociale huurwoning, inschrijftijd vereist.'],
+    ['id' => 5, 'type' => 'kamer',       'stad' => 'groningen',   'categorie' => 'vrij',    'prijs' => 620,   'kamers' => 1, 'oppervlak' => 18,  'lat' => 53.220, 'lng' => 6.565,  'omschrijving' => 'Gemeubileerde kamer in studentenhuis centrum.'],
+    ['id' => 6, 'type' => 'woning',      'stad' => 'eindhoven',   'categorie' => 'koop',    'prijs' => 340000,'kamers' => 5, 'oppervlak' => 130, 'lat' => 51.442, 'lng' => 5.469,  'omschrijving' => 'Vrijstaande woning met garage en grote tuin.'],
+    ['id' => 7, 'type' => 'appartement', 'stad' => 'amsterdam',   'categorie' => 'koop',    'prijs' => 425000,'kamers' => 2, 'oppervlak' => 64,  'lat' => 52.354, 'lng' => 4.893,  'omschrijving' => 'Instapklaar appartement in De Pijp.'],
+    ['id' => 8, 'type' => 'studio',      'stad' => 'rotterdam',   'categorie' => 'vrij',    'prijs' => 950,   'kamers' => 1, 'oppervlak' => 28,  'lat' => 51.907, 'lng' => 4.487,  'omschrijving' => 'Gezellige studio met uitzicht op de Maas.'],
 ];
 
 // Filter toepassen op demo-data
@@ -144,11 +144,23 @@ $woningen = array_filter($alleWoningen, function ($w) use ($filterType, $filterS
         <p class="text-sm text-gedempt">
             <strong class="text-ink"><?= count($woningen) ?></strong> woningen gevonden
         </p>
-        <!-- CREATE knop — alleen zichtbaar voor beheerders in echte versie -->
-        <a href="woning-toevoegen.php"
-           class="bg-ink hover:bg-ink2 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
-            + Woning toevoegen
-        </a>
+
+        <?php if (!empty($woningen)): ?>
+        <div class="flex gap-2">
+            <button onclick="wisselWeergave('grid')" id="btn-grid"
+                    class="bg-ink text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors">
+                ▦ Grid
+            </button>
+            <button onclick="wisselWeergave('kaart')" id="btn-kaart"
+                    class="bg-white border border-gray-200 text-ink px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors hover:bg-gray-50">
+                🗺 Kaart
+            </button>
+            <a href="woning-toevoegen.php"
+               class="bg-ink hover:bg-ink2 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                + Woning toevoegen
+            </a>
+        </div>
+        <?php endif; ?>
     </div>
 
     <?php if (empty($woningen)): ?>
@@ -158,17 +170,16 @@ $woningen = array_filter($alleWoningen, function ($w) use ($filterType, $filterS
             <p class="text-sm">Pas de filters aan of verwijder het maximale budget.</p>
         </div>
     <?php else: ?>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Grid-weergave -->
+        <div id="view-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <?php foreach ($woningen as $w): ?>
                 <div class="bg-white rounded-xl border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
 
-                    <!-- Afbeeldingvlak (placeholder) -->
                     <div class="bg-gray-100 h-36 flex items-center justify-center text-4xl">
                         <?= $w['type'] === 'kamer' ? '🛏️' : ($w['type'] === 'studio' ? '🪟' : ($w['categorie'] === 'koop' ? '🏡' : '🏢')) ?>
                     </div>
 
                     <div class="p-4">
-                        <!-- Badge: categorie -->
                         <?php
                         $badgeKleur = match ($w['categorie']) {
                             'sociaal' => 'bg-green-100 text-green-800',
@@ -200,8 +211,7 @@ $woningen = array_filter($alleWoningen, function ($w) use ($filterType, $filterS
 
                         <div class="flex items-center justify-between text-sm">
                             <div class="text-gedempt">
-                                🛏 <?= $w['kamers'] ?> kamer<?= $w['kamers'] > 1 ? 's' : '' ?> &nbsp;·&nbsp;
-                                📐 <?= $w['oppervlak'] ?> m²
+                                🛏 <?= $w['kamers'] ?> kamer<?= $w['kamers'] > 1 ? 's' : '' ?> · 📐 <?= $w['oppervlak'] ?> m²
                             </div>
                             <div class="font-display font-bold text-oranje">
                                 <?= $w['categorie'] === 'koop'
@@ -210,7 +220,6 @@ $woningen = array_filter($alleWoningen, function ($w) use ($filterType, $filterS
                             </div>
                         </div>
 
-                        <!-- Actieknoppen: CRUD (Update / Delete) -->
                         <div class="flex gap-2 mt-3 pt-3 border-t border-gray-100">
                             <a href="woning-detail.php?id=<?= $w['id'] ?>"
                                class="flex-1 text-center text-xs font-semibold py-1.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
@@ -230,8 +239,86 @@ $woningen = array_filter($alleWoningen, function ($w) use ($filterType, $filterS
                 </div>
             <?php endforeach; ?>
         </div>
+
+        <!-- Kaart-weergave -->
+        <div id="view-kaart" class="hidden rounded-xl border border-gray-100 overflow-hidden" style="height: 500px;">
+            <div id="kaart-container" style="height: 100%;"></div>
+        </div>
     <?php endif; ?>
 
 </div>
+
+<script>
+var kaart = null;
+var markers = [];
+
+function wisselWeergave(mode) {
+    var grid = document.getElementById('view-grid');
+    var kaartView = document.getElementById('view-kaart');
+    var btnGrid = document.getElementById('btn-grid');
+    var btnKaart = document.getElementById('btn-kaart');
+
+    if (mode === 'kaart') {
+        grid.classList.add('hidden');
+        kaartView.classList.remove('hidden');
+        btnGrid.classList.remove('bg-ink', 'text-white');
+        btnGrid.classList.add('bg-white', 'border', 'border-gray-200', 'text-ink');
+        btnKaart.classList.remove('bg-white', 'border', 'border-gray-200', 'text-ink');
+        btnKaart.classList.add('bg-ink', 'text-white');
+        initKaart();
+    } else {
+        kaartView.classList.add('hidden');
+        grid.classList.remove('hidden');
+        btnKaart.classList.remove('bg-ink', 'text-white');
+        btnKaart.classList.add('bg-white', 'border', 'border-gray-200', 'text-ink');
+        btnGrid.classList.remove('bg-white', 'border', 'border-gray-200', 'text-ink');
+        btnGrid.classList.add('bg-ink', 'text-white');
+    }
+}
+
+function initKaart() {
+    if (kaart) {
+        kaart.invalidateSize();
+        return;
+    }
+
+    kaart = L.map('kaart-container').setView([52.1, 5.3], 8);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '&copy; OpenStreetMap'
+    }).addTo(kaart);
+
+    var woningen = <?= json_encode(array_values($woningen), JSON_UNESCAPED_UNICODE) ?>;
+
+    woningen.forEach(function (w) {
+        var prijs = w.categorie === 'koop'
+            ? '€ ' + Number(w.prijs).toLocaleString('nl-NL')
+            : '€ ' + w.prijs + '/mnd';
+
+        var marker = L.marker([w.lat, w.lng]).addTo(kaart);
+        marker.bindPopup(
+            '<strong style="font-size:14px;">' + w.type.charAt(0).toUpperCase() + w.type.slice(1) + ' &mdash; ' + w.stad.charAt(0).toUpperCase() + w.stad.slice(1) + '</strong><br>' +
+            w.omschrijving + '<br>' +
+            '🛏 ' + w.kamers + ' kamer' + (w.kamers > 1 ? 's' : '') + ' · 📐 ' + w.oppervlak + ' m²<br>' +
+            '<span style="color:#E8650A;font-weight:bold;">' + prijs + '</span><br>' +
+            '<a href="woning-detail.php?id=' + w.id + '" style="font-size:12px;color:#E8650A;">→ Bekijken</a>'
+        );
+        markers.push(marker);
+    });
+
+    if (woningen.length > 0) {
+        var group = L.featureGroup(markers);
+        kaart.fitBounds(group.getBounds().pad(0.1));
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('kaart') === '1') {
+        wisselWeergave('kaart');
+    }
+});
+</script>
 
 <?php require_once __DIR__ . '/../includes/footer.php'; ?>

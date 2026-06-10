@@ -20,6 +20,10 @@ $pagesDir = $inPages ? './' : 'woningwijzer/pages/';
     <!-- Google Fonts: Space Grotesk + Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
+    <!-- Leaflet (OpenStreetMap kaarten) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
     <script>
         tailwind.config = {
             theme: {
