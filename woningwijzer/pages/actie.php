@@ -222,7 +222,7 @@ $percentage = min(100, round($aantal / $doel * 100));
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-        <a href="index.php" class="bg-white border border-gray-100 rounded-xl p-5 hover:shadow-md transition-shadow group">
+        <a href="over-de-crisis.php" class="bg-white border border-gray-100 rounded-xl p-5 hover:shadow-md transition-shadow group">
             <h4 class="font-display font-bold text-ink group-hover:text-oranje transition-colors mb-2">🏠 Over de crisis</h4>
             <p class="text-sm text-gedempt">Lees meer over de woningcrisis in Nederland en de belangrijkste cijfers.</p>
         </a>

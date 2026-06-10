@@ -61,6 +61,7 @@ $pagesDir = $inPages ? './' : 'woningwijzer/pages/';
             <?php
             $navItems = [
                 'index' => ['label' => 'Home', 'href' => $root . 'index.php'],
+                'over-de-crisis' => ['label' => 'Crisis', 'href' => $pagesDir . 'over-de-crisis.php'],
                 'zoeken' => ['label' => 'Zoeken', 'href' => $pagesDir . 'zoeken.php'],
                 'bereken' => ['label' => 'Bereken', 'href' => $pagesDir . 'bereken.php'],
                 'rechten' => ['label' => 'Rechten', 'href' => $pagesDir . 'rechten.php'],

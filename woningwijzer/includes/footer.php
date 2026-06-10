@@ -40,7 +40,7 @@
                 <div>
                     <h5 class="text-xs font-semibold uppercase tracking-widest text-white/90 mb-3">Informatie</h5>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="<?= $root ?>index.php"          class="hover:text-white transition-colors">Over de crisis</a></li>
+                        <li><a href="<?= $pagesDir ?>over-de-crisis.php" class="hover:text-white transition-colors">Over de crisis</a></li>
                         <li><a href="<?= $pagesDir ?>nieuws.php"   class="hover:text-white transition-colors">Nieuws &amp; beleid</a></li>
                         <li><a href="<?= $pagesDir ?>meldingen.php"class="hover:text-white transition-colors">Meldingen</a></li>
                         <li><a href="<?= $pagesDir ?>actie.php"    class="hover:text-white transition-colors">Contact</a></li>
