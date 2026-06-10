@@ -1,10 +1,32 @@
 <?php
-$paginaTitel = 'Meldingen';
-require_once __DIR__ . '/../includes/header.php';
 require_once __DIR__ . '/../includes/db.php';
+
+$fouten = [];
+$succes = false;
+
+// Nieuwe melding verwerken (POST) — vóór HTML-output voor redirect
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $type = trim($_POST['type'] ?? '');
+    $omschrijving = trim($_POST['omschrijving'] ?? '');
+
+    if (empty($type)) $fouten[] = 'Kies een type melding.';
+    if (empty($omschrijving)) $fouten[] = 'Schrijf een omschrijving.';
+
+    if (empty($fouten)) {
+        $db = getDb();
+        $stmt = $db->prepare("INSERT INTO meldingen (type, omschrijving, status) VALUES (:type, :omschrijving, 'Open')");
+        $stmt->execute([':type' => $type, ':omschrijving' => $omschrijving]);
+
+        header("Location: meldingen.php?toegevoegd=1");
+        exit;
+    }
+}
 
 $db = getDb();
 $meldingen = $db->query("SELECT * FROM meldingen ORDER BY aangemaakt_op DESC")->fetchAll();
+
+$paginaTitel = 'Meldingen';
+require_once __DIR__ . '/../includes/header.php';
 ?>
 
 <div class="max-w-6xl mx-auto px-4 py-10">
@@ -15,6 +37,23 @@ $meldingen = $db->query("SELECT * FROM meldingen ORDER BY aangemaakt_op DESC")->
         Zie je iets dat niet klopt op de woningmarkt? Meld het hier. Alle meldingen worden vertrouwelijk behandeld.
     </p>
 
+    <?php if (isset($_GET['toegevoegd'])): ?>
+        <div class="bg-green-50 border border-green-200 text-green-800 rounded-xl p-4 mb-6 font-semibold">
+            ✅ Melding succesvol toegevoegd!
+        </div>
+    <?php endif; ?>
+
+    <?php if (!empty($fouten)): ?>
+        <div class="bg-red-50 border border-red-200 text-red-800 rounded-xl p-4 mb-6">
+            <p class="font-semibold mb-2">Los de volgende fouten op:</p>
+            <ul class="text-sm list-disc list-inside">
+                <?php foreach ($fouten as $f): ?>
+                    <li><?= htmlspecialchars($f) ?></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    <?php endif; ?>
+
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div class="bg-white rounded-xl border border-gray-100 p-5 text-center">
             <div class="text-3xl mb-2">📋</div>
@@ -23,12 +62,12 @@ $meldingen = $db->query("SELECT * FROM meldingen ORDER BY aangemaakt_op DESC")->
         </div>
         <div class="bg-white rounded-xl border border-gray-100 p-5 text-center">
             <div class="text-3xl mb-2">🔄</div>
-            <p class="font-display font-bold text-2xl text-oranje">3</p>
+            <p class="font-display font-bold text-2xl text-oranje"><?= count(array_filter($meldingen, fn($m) => $m['status'] === 'In behandeling' || $m['status'] === 'Gemeld bij Huurcommissie')) ?></p>
             <p class="text-xs text-gedempt">In behandeling</p>
         </div>
         <div class="bg-white rounded-xl border border-gray-100 p-5 text-center">
             <div class="text-3xl mb-2">✅</div>
-            <p class="font-display font-bold text-2xl text-green-600">1</p>
+            <p class="font-display font-bold text-2xl text-green-600"><?= count(array_filter($meldingen, fn($m) => $m['status'] === 'Afgehandeld')) ?></p>
             <p class="text-xs text-gedempt">Afgehandeld</p>
         </div>
     </div>
@@ -36,9 +75,32 @@ $meldingen = $db->query("SELECT * FROM meldingen ORDER BY aangemaakt_op DESC")->
     <div class="bg-white rounded-xl border border-gray-100 overflow-hidden mb-8">
         <div class="p-5 border-b border-gray-100 flex items-center justify-between">
             <h2 class="font-display font-semibold text-lg">Overzicht meldingen</h2>
-            <button class="bg-oranje hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+            <button onclick="document.getElementById('meldingForm').classList.toggle('hidden')" class="bg-oranje hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors cursor-pointer">
                 + Nieuwe melding
             </button>
+        </div>
+
+        <div id="meldingForm" class="p-5 border-b border-gray-100 bg-orange-50 <?= (!empty($fouten)) ? '' : 'hidden' ?>">
+            <form method="POST" class="space-y-4 max-w-lg">
+                <div>
+                    <label class="block text-sm font-semibold mb-1">Type melding</label>
+                    <select name="type" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                        <option value="">— Kies —</option>
+                        <option value="discriminatie" <?= ($_POST['type'] ?? '') === 'discriminatie' ? 'selected' : '' ?>>Discriminatie</option>
+                        <option value="illegale praktijken" <?= ($_POST['type'] ?? '') === 'illegale praktijken' ? 'selected' : '' ?>>Illegale praktijken</option>
+                        <option value="onderhoud" <?= ($_POST['type'] ?? '') === 'onderhoud' ? 'selected' : '' ?>>Onderhoud</option>
+                        <option value="huurverhoging" <?= ($_POST['type'] ?? '') === 'huurverhoging' ? 'selected' : '' ?>>Huurverhoging</option>
+                        <option value="anders" <?= ($_POST['type'] ?? '') === 'anders' ? 'selected' : '' ?>>Anders</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold mb-1">Omschrijving</label>
+                    <textarea name="omschrijving" rows="3" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" placeholder="Beschrijf de situatie..."><?= htmlspecialchars($_POST['omschrijving'] ?? '') ?></textarea>
+                </div>
+                <button type="submit" class="bg-oranje hover:bg-orange-700 text-white px-5 py-2 rounded-lg text-sm font-semibold transition-colors cursor-pointer">
+                    Melding indienen
+                </button>
+            </form>
         </div>
         <div class="divide-y divide-gray-100">
             <?php foreach ($meldingen as $m): ?>
