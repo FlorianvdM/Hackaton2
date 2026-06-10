@@ -5,18 +5,26 @@
 // Werkt op XAMPP (Linux/Windows) én WAMP.
 // ============================================================
 
+// ======================================================================
+// DATABASE-INSTELLINGEN — pas aan voor jouw omgeving
+// ======================================================================
+// Lokaal (XAMPP/WAMP):     host='127.0.0.1:3306', user='root', pass=''
+// Centrale server:         host='192.168.x.x:3306', user='...', pass='...'
+// ======================================================================
+define('DB_HOST', '127.0.0.1:3306');  // of bijv. '192.168.1.100:3306'
 define('DB_NAME', 'woningwijzer');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_CHAR', 'utf8mb4');
 
-// Probeer meerdere host/port combinaties (XAMPP vs WAMP, Linux vs Windows)
-$dbHosts = [
+// Probeer fallback-combinaties als DB_HOST niet werkt (handig voor XAMPP/WAMP)
+$dbHosts = array_unique([
+    DB_HOST,
     '127.0.0.1:3306',
     'localhost:3306',
     '127.0.0.1:3307',
     'localhost:3307',
-];
+]);
 
 function getDb(): PDO
 {
@@ -76,7 +84,7 @@ function _connectOrCreate(): PDO
          . '<li>Zorg dat MySQL / MariaDB <strong>aanstaat</strong> (XAMPP: start MySQL, WAMP: groen icoon)</li>'
          . '<li>Controleer of <strong>root</strong> zonder wachtwoord werkt in phpMyAdmin</li>'
          . '<li>Als je een <strong>wachtwoord</strong> hebt, pas <code>DB_PASS</code> aan in <code>includes/db.php</code></li>'
-         . '<li>Als MySQL op een andere poort draait, pas <code>$dbHosts</code> aan in <code>includes/db.php</code></li>'
+         . '<li>Als MySQL op een andere poort draait, pas <code>DB_HOST</code> aan in <code>includes/db.php</code></li>'
          . '</ul>'
          . '<p style="font-size:0.85em;color:#64748b;margin:0;">Technisch: ' . htmlspecialchars($lastError) . '</p>'
          . '</div>';
