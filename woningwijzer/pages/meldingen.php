@@ -128,11 +128,11 @@ require_once __DIR__ . '/../includes/header.php';
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <a href="rechten.php" class="bg-white dark:bg-gray-800 dark:text-gray-200 border border-gray-100 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow group">
-            <h4 class="font-display font-bold text-ink group-hover:text-oranje transition-colors mb-2">⚖️ Ken je rechten</h4>
+            <h4 class="font-display font-bold text-ink dark:text-gray-100 group-hover:text-oranje transition-colors mb-2">⚖️ Ken je rechten</h4>
             <p class="text-sm text-gedempt">Lees wat jouw rechten zijn als huurder en hoe je huurgeschillen kunt aanvechten.</p>
         </a>
         <a href="actie.php" class="bg-white dark:bg-gray-800 dark:text-gray-200 border border-gray-100 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow group">
-            <h4 class="font-display font-bold text-ink group-hover:text-oranje transition-colors mb-2">📢 Doe mee</h4>
+            <h4 class="font-display font-bold text-ink dark:text-gray-100 group-hover:text-oranje transition-colors mb-2">📢 Doe mee</h4>
             <p class="text-sm text-gedempt">Teken de petitie, schrijf je volksvertegenwoordiger en help de woningcrisis oplossen.</p>
         </a>
     </div>

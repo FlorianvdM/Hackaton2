@@ -65,7 +65,7 @@ $artikelen = [
                         <?= $a['categorie'] ?>
                     </span>
                 </div>
-                <h3 class="font-display font-semibold text-base text-ink mb-2"><?= htmlspecialchars($a['titel']) ?></h3>
+                <h3 class="font-display font-semibold text-base text-ink dark:text-gray-100 mb-2"><?= htmlspecialchars($a['titel']) ?></h3>
                 <p class="text-sm text-gedempt leading-relaxed mb-4"><?= htmlspecialchars($a['samenvatting']) ?></p>
                 <a href="<?= $a['link'] ?>" class="text-oranje text-xs font-semibold hover:underline">→ Lees verder</a>
             </div>
@@ -76,18 +76,18 @@ $artikelen = [
         <h3 class="font-display font-semibold text-base mb-2">📬 Blijf op de hoogte</h3>
         <p class="text-sm text-gedempt mb-4">Ontvang maandelijks een overzicht van het belangrijkste woningmarktnieuws in je mailbox.</p>
         <form class="flex gap-2 max-w-md">
-            <input type="email" placeholder="Jouw e-mailadres" class="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm text-ink">
+            <input type="email" placeholder="Jouw e-mailadres" class="flex-1 border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2 text-sm text-ink dark:text-gray-100">
             <button type="submit" class="bg-oranje hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">Aanmelden</button>
         </form>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <a href="actie.php" class="bg-white dark:bg-gray-800 dark:text-gray-200 border border-gray-100 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow group">
-            <h4 class="font-display font-bold text-ink group-hover:text-oranje transition-colors mb-2">📢 Kom in actie</h4>
+            <h4 class="font-display font-bold text-ink dark:text-gray-100 group-hover:text-oranje transition-colors mb-2">📢 Kom in actie</h4>
             <p class="text-sm text-gedempt">Teken petities, schrijf je volksvertegenwoordiger en help de woningcrisis oplossen.</p>
         </a>
         <a href="meldingen.php" class="bg-white dark:bg-gray-800 dark:text-gray-200 border border-gray-100 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow group">
-            <h4 class="font-display font-bold text-ink group-hover:text-oranje transition-colors mb-2">🔔 Meld misstanden</h4>
+            <h4 class="font-display font-bold text-ink dark:text-gray-100 group-hover:text-oranje transition-colors mb-2">🔔 Meld misstanden</h4>
             <p class="text-sm text-gedempt">Zie je illegale praktijken of discriminatie? Meld het via ons meldingssysteem.</p>
         </a>
     </div>

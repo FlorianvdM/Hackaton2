@@ -13,7 +13,7 @@ $woning = $stmt->fetch();
 
 <div class="max-w-4xl mx-auto px-4 py-10">
 
-    <a href="zoeken.php" class="text-sm text-gedempt hover:text-ink mb-6 inline-flex items-center gap-1">
+    <a href="zoeken.php" class="text-sm text-gedempt hover:text-ink dark:text-gray-100 mb-6 inline-flex items-center gap-1">
         ← Terug naar overzicht
     </a>
 

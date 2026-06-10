@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <div class="max-w-2xl mx-auto px-4 py-10">
 
-    <a href="zoeken.php" class="text-sm text-gedempt hover:text-ink mb-6 inline-flex items-center gap-1">
+    <a href="zoeken.php" class="text-sm text-gedempt hover:text-ink dark:text-gray-100 mb-6 inline-flex items-center gap-1">
         ← Terug naar overzicht
     </a>
 
@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div>
                 <label class="block text-xs font-semibold uppercase tracking-wide text-gedempt mb-1">Type woning</label>
-                <select name="type" class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-ink" required>
+                <select name="type" class="w-full border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100" required>
                     <option value="">Kies een type</option>
                     <option value="appartement" <?= ($_POST['type'] ?? $woning['type']) === 'appartement' ? 'selected' : '' ?>>Appartement</option>
                     <option value="woning"      <?= ($_POST['type'] ?? $woning['type']) === 'woning' ? 'selected' : '' ?>>Eengezinswoning</option>
@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div>
                 <label class="block text-xs font-semibold uppercase tracking-wide text-gedempt mb-1">Gemeente</label>
-                <select name="stad" class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-ink" required>
+                <select name="stad" class="w-full border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100" required>
                     <option value="">Kies een gemeente</option>
                     <?php foreach (['amsterdam', 'rotterdam', 'utrecht', 'denhaag', 'eindhoven', 'groningen'] as $s): ?>
                         <option value="<?= $s ?>" <?= ($_POST['stad'] ?? $woning['stad']) === $s ? 'selected' : '' ?>><?= ucfirst($s) ?></option>
@@ -116,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div>
                 <label class="block text-xs font-semibold uppercase tracking-wide text-gedempt mb-1">Huur / Koop</label>
-                <select name="categorie" class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-ink" required>
+                <select name="categorie" class="w-full border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100" required>
                     <option value="">Kies een categorie</option>
                     <option value="sociaal" <?= ($_POST['categorie'] ?? $woning['categorie']) === 'sociaal' ? 'selected' : '' ?>>Sociale huur</option>
                     <option value="vrij"    <?= ($_POST['categorie'] ?? $woning['categorie']) === 'vrij' ? 'selected' : '' ?>>Vrije sector huur</option>
@@ -129,26 +129,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label class="block text-xs font-semibold uppercase tracking-wide text-gedempt mb-1">Prijs (€)</label>
                     <input type="number" name="prijs" min="1"
                            value="<?= htmlspecialchars($_POST['prijs'] ?? $woning['prijs']) ?>"
-                           class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-ink" required>
+                           class="w-full border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100" required>
                 </div>
                 <div>
                     <label class="block text-xs font-semibold uppercase tracking-wide text-gedempt mb-1">Kamers</label>
                     <input type="number" name="kamers" min="1" max="20"
                            value="<?= htmlspecialchars($_POST['kamers'] ?? $woning['kamers']) ?>"
-                           class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-ink" required>
+                           class="w-full border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100" required>
                 </div>
                 <div>
                     <label class="block text-xs font-semibold uppercase tracking-wide text-gedempt mb-1">Oppervlak (m²)</label>
                     <input type="number" name="oppervlak" min="1"
                            value="<?= htmlspecialchars($_POST['oppervlak'] ?? $woning['oppervlak']) ?>"
-                           class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-ink" required>
+                           class="w-full border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100" required>
                 </div>
             </div>
 
             <div>
                 <label class="block text-xs font-semibold uppercase tracking-wide text-gedempt mb-1">Omschrijving</label>
                 <textarea name="omschrijving" rows="3" placeholder="Korte beschrijving van de woning..."
-                          class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-ink resize-none"
+                          class="w-full border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100 resize-none"
                           required><?= htmlspecialchars($_POST['omschrijving'] ?? $woning['omschrijving']) ?></textarea>
             </div>
 
@@ -156,7 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <button type="submit" class="bg-oranje hover:bg-orange-700 text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-colors">
                     Wijzigingen opslaan
                 </button>
-                <a href="zoeken.php" class="border border-gray-200 hover:bg-gray-50 text-ink px-5 py-2.5 rounded-lg text-sm transition-colors text-center">Annuleren</a>
+                <a href="zoeken.php" class="border border-gray-200 dark:border-gray-600 hover:bg-gray-50 text-ink dark:text-gray-100 px-5 py-2.5 rounded-lg text-sm transition-colors text-center">Annuleren</a>
             </div>
 
         </form>

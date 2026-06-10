@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $id > 0) {
 
 <div class="max-w-2xl mx-auto px-4 py-10">
 
-    <a href="zoeken.php" class="text-sm text-gedempt hover:text-ink mb-6 inline-flex items-center gap-1">
+    <a href="zoeken.php" class="text-sm text-gedempt hover:text-ink dark:text-gray-100 mb-6 inline-flex items-center gap-1">
         ← Terug naar overzicht
     </a>
 
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $id > 0) {
                 <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-colors">
                     Ja, verwijderen
                 </button>
-                <a href="zoeken.php" class="border border-gray-200 hover:bg-gray-50 text-ink px-5 py-2.5 rounded-lg text-sm transition-colors">Annuleren</a>
+                <a href="zoeken.php" class="border border-gray-200 dark:border-gray-600 hover:bg-gray-50 text-ink dark:text-gray-100 px-5 py-2.5 rounded-lg text-sm transition-colors">Annuleren</a>
             </form>
         </div>
     <?php endif; ?>

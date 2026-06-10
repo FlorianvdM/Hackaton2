@@ -54,7 +54,7 @@ $woningen = $stmt->fetchAll();
         <!-- Type -->
         <div class="flex flex-col gap-1 w-full sm:flex-1 sm:min-w-[130px]">
             <label class="text-xs font-semibold uppercase tracking-wide text-gedempt">Type</label>
-            <select name="type" class="border border-gray-200 rounded-lg px-3 py-2 text-sm text-ink">
+            <select name="type" class="border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2 text-sm text-ink dark:text-gray-100">
                 <option value="">Alle types</option>
                 <option value="appartement" <?= $filterType === 'appartement' ? 'selected' : '' ?>>Appartement</option>
                 <option value="woning"      <?= $filterType === 'woning' ? 'selected' : '' ?>>Eengezinswoning</option>
@@ -66,7 +66,7 @@ $woningen = $stmt->fetchAll();
         <!-- Stad -->
         <div class="flex flex-col gap-1 w-full sm:flex-1 sm:min-w-[130px]">
             <label class="text-xs font-semibold uppercase tracking-wide text-gedempt">Gemeente</label>
-            <select name="stad" class="border border-gray-200 rounded-lg px-3 py-2 text-sm text-ink">
+            <select name="stad" class="border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2 text-sm text-ink dark:text-gray-100">
                 <option value="">Alle gemeenten</option>
                 <option value="amsterdam"  <?= $filterStad === 'amsterdam' ? 'selected' : '' ?>>Amsterdam</option>
                 <option value="rotterdam"  <?= $filterStad === 'rotterdam' ? 'selected' : '' ?>>Rotterdam</option>
@@ -80,7 +80,7 @@ $woningen = $stmt->fetchAll();
         <!-- Categorie -->
         <div class="flex flex-col gap-1 w-full sm:flex-1 sm:min-w-[130px]">
             <label class="text-xs font-semibold uppercase tracking-wide text-gedempt">Huur / Koop</label>
-            <select name="categorie" class="border border-gray-200 rounded-lg px-3 py-2 text-sm text-ink">
+            <select name="categorie" class="border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2 text-sm text-ink dark:text-gray-100">
                 <option value="">Beide</option>
                 <option value="sociaal" <?= $filterCategorie === 'sociaal' ? 'selected' : '' ?>>Huur sociaal</option>
                 <option value="vrij"    <?= $filterCategorie === 'vrij' ? 'selected' : '' ?>>Huur vrij sector</option>
@@ -93,7 +93,7 @@ $woningen = $stmt->fetchAll();
             <label class="text-xs font-semibold uppercase tracking-wide text-gedempt">Max. budget (€)</label>
             <input type="number" name="budget" value="<?= htmlspecialchars($filterBudget ?: '') ?>"
                    placeholder="Geen max."
-                   class="border border-gray-200 rounded-lg px-3 py-2 text-sm text-ink">
+                   class="border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2 text-sm text-ink dark:text-gray-100"
         </div>
 
         <div class="flex gap-2 w-full sm:w-auto">
@@ -102,7 +102,7 @@ $woningen = $stmt->fetchAll();
                 Zoeken
             </button>
             <a href="zoeken.php"
-               class="flex-1 sm:flex-none border border-gray-200 hover:bg-gray-50 text-ink px-4 py-2 rounded-lg text-sm transition-colors text-center">
+               class="flex-1 sm:flex-none border border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 text-ink dark:text-gray-100 px-4 py-2 rounded-lg text-sm transition-colors text-center">
                 Reset
             </a>
         </div>
@@ -111,7 +111,7 @@ $woningen = $stmt->fetchAll();
     <!-- Resultaten -->
     <div class="flex items-center justify-between mb-4">
         <p class="text-sm text-gedempt">
-            <strong class="text-ink"><?= count($woningen) ?></strong> woningen gevonden
+            <strong class="text-ink dark:text-gray-100"><?= count($woningen) ?></strong> woningen gevonden
         </p>
 
         <?php if (!empty($woningen)): ?>
@@ -121,7 +121,7 @@ $woningen = $stmt->fetchAll();
                 ▦ Grid
             </button>
             <button onclick="wisselWeergave('kaart')" id="btn-kaart"
-                    class="bg-white border border-gray-200 text-ink px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors hover:bg-gray-50">
+                    class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 text-ink dark:text-gray-100 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors hover:bg-gray-50 dark:hover:bg-gray-700">
                 🗺 Kaart
             </button>
             <a href="woning-toevoegen.php"
@@ -135,7 +135,7 @@ $woningen = $stmt->fetchAll();
     <?php if (empty($woningen)): ?>
         <div class="text-center py-16 text-gedempt">
             <div class="text-5xl mb-4">🏚️</div>
-            <p class="text-lg font-semibold text-ink mb-2">Geen woningen gevonden</p>
+            <p class="text-lg font-semibold text-ink dark:text-gray-100 mb-2">Geen woningen gevonden</p>
             <p class="text-sm">Pas de filters aan of verwijder het maximale budget.</p>
         </div>
     <?php else: ?>
@@ -170,7 +170,7 @@ $woningen = $stmt->fetchAll();
                             <a href="rechten.php" class="text-[10px] text-oranje hover:underline ml-2">Ken je rechten →</a>
                         <?php endif; ?>
 
-                        <h3 class="font-display font-semibold text-base mt-2 mb-1 text-ink capitalize">
+                        <h3 class="font-display font-semibold text-base mt-2 mb-1 text-ink dark:text-gray-100 capitalize">
                             <?= htmlspecialchars($w['type']) ?> — <?= ucfirst($w['stad']) ?>
                         </h3>
 
@@ -191,7 +191,7 @@ $woningen = $stmt->fetchAll();
 
                         <div class="flex gap-2 mt-3 pt-3 border-t border-gray-100">
                             <a href="woning-detail.php?id=<?= $w['id'] ?>"
-                               class="flex-1 text-center text-xs font-semibold py-1.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                               class="flex-1 text-center text-xs font-semibold py-1.5 border border-gray-200 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
                                 Bekijken
                             </a>
                             <a href="woning-bewerken.php?id=<?= $w['id'] ?>"

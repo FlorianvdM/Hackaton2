@@ -70,7 +70,7 @@ $percentage = min(100, round($aantal / $doel * 100));
 
     <p class="text-xs font-semibold uppercase tracking-widest text-oranje mb-1">Doe mee & actie</p>
     <h1 class="font-display text-3xl font-bold mb-2">Samen voor een betaalbare woningmarkt</h1>
-    <p class="text-gedempt text-base max-w-lg mb-8">
+    <p class="text-gedempt dark:text-gray-400 text-base max-w-lg mb-8">
         De woningcrisis los je niet alleen op. Doe mee, laat je stem horen en draag bij aan structurele verandering.
     </p>
 
@@ -80,7 +80,7 @@ $percentage = min(100, round($aantal / $doel * 100));
         <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-6">
             <div class="text-3xl mb-3">📝</div>
             <h2 class="font-display font-semibold text-lg mb-2">Teken de petitie</h2>
-            <p class="text-sm text-gedempt mb-4">
+            <p class="text-sm text-gedempt dark:text-gray-400 mb-4">
                 De <strong>WoningWijzer-petitie</strong> roept de overheid op tot meer sociale huurwoningen,
                 strengere regulering van de vrije sector en bescherming van huurders.
             </p>
@@ -88,7 +88,7 @@ $percentage = min(100, round($aantal / $doel * 100));
                 <span class="font-display text-4xl font-bold text-oranje" id="aantal-handtekeningen">
                     <?= number_format($aantal, 0, ',', '.') ?>
                 </span>
-                <p class="text-xs text-gedempt">handtekeningen van de <?= number_format($doel, 0, ',', '.') ?> benodigd</p>
+                <p class="text-xs text-gedempt dark:text-gray-400">handtekeningen van de <?= number_format($doel, 0, ',', '.') ?> benodigd</p>
                 <div class="bg-gray-200 rounded-full h-2 mt-2">
                     <div class="bg-oranje rounded-full h-2 transition-all duration-500" style="width: <?= $percentage ?>%" id="progress-bar"></div>
                 </div>
@@ -103,9 +103,9 @@ $percentage = min(100, round($aantal / $doel * 100));
             <form method="POST" action="actie.php" class="space-y-3">
                 <input type="hidden" name="actie" value="petitie">
                 <input type="text" name="naam" placeholder="Je volledige naam" required
-                       class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-ink">
+                       class="w-full border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100">
                 <input type="email" name="email" placeholder="Je e-mailadres" required
-                       class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-ink">
+                       class="w-full border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100">
                 <button type="submit"
                         class="bg-oranje hover:bg-orange-700 text-white w-full px-4 py-3 rounded-lg text-sm font-semibold transition-colors">
                     ✍️ Teken nu de petitie
@@ -117,7 +117,7 @@ $percentage = min(100, round($aantal / $doel * 100));
         <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-6">
             <div class="text-3xl mb-3">✉️</div>
             <h2 class="font-display font-semibold text-lg mb-2">Schrijf je volksvertegenwoordiger</h2>
-            <p class="text-sm text-gedempt mb-4">
+            <p class="text-sm text-gedempt dark:text-gray-400 mb-4">
                 Gebruik deze brief om jouw gemeenteraadslid of Tweede Kamerlid aan te schrijven
                 over de woningnood in jouw regio.
             </p>
@@ -126,14 +126,14 @@ $percentage = min(100, round($aantal / $doel * 100));
                 <input type="hidden" name="actie" value="brief">
 
                 <input type="text" name="brief_naam" id="brief-naam" placeholder="Jouw naam" required
-                       class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-ink">
+                       class="w-full border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100">
 
                 <input type="text" name="brief_gemeente" id="brief-gemeente" placeholder="Jouw gemeente" required
-                       class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-ink">
+                       class="w-full border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100">
 
                 <textarea name="brief_toevoeging" id="brief-toevoeging" rows="3"
                           placeholder="Eigen toevoeging (optioneel)"
-                          class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-ink resize-none"></textarea>
+                          class="w-full border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2.5 text-sm text-ink dark:text-gray-100 resize-none"></textarea>
 
                 <button type="submit"
                         class="bg-ink hover:bg-ink2 text-white w-full px-4 py-3 rounded-lg text-sm font-semibold transition-colors">
@@ -141,8 +141,8 @@ $percentage = min(100, round($aantal / $doel * 100));
                 </button>
             </form>
 
-            <div id="brief-voorbeeld" class="bg-gray-50 rounded-xl p-4 mt-4 text-sm text-gedempt border border-gray-100 hidden">
-                <p class="font-semibold text-ink mb-1">Voorbeeldbrief:</p>
+            <div id="brief-voorbeeld" class="bg-gray-50 rounded-xl p-4 mt-4 text-sm text-gedempt dark:text-gray-400 border border-gray-100 hidden">
+                <p class="font-semibold text-ink dark:text-gray-100 mb-1">Voorbeeldbrief:</p>
                 <p id="brief-tekst" class="whitespace-pre-line"></p>
             </div>
         </div>
@@ -151,7 +151,7 @@ $percentage = min(100, round($aantal / $doel * 100));
         <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-6">
             <div class="text-3xl mb-3">🔔</div>
             <h2 class="font-display font-semibold text-lg mb-2">Meld misstanden</h2>
-            <p class="text-sm text-gedempt mb-4">
+            <p class="text-sm text-gedempt dark:text-gray-400 mb-4">
                 Zie je discriminatie bij huurtoewijzing, illegale praktijken of onredelijke huurverhogingen?
                 Meld het bij ons — anoniem als je wilt.
             </p>
@@ -164,7 +164,7 @@ $percentage = min(100, round($aantal / $doel * 100));
         <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-6">
             <div class="text-3xl mb-3">📢</div>
             <h2 class="font-display font-semibold text-lg mb-2">Deel en verspreid</h2>
-            <p class="text-sm text-gedempt mb-4">
+            <p class="text-sm text-gedempt dark:text-gray-400 mb-4">
                 Help anderen bewust te maken van de woningcrisis. Deel deze website, deel de petitie,
                 en praat mee over de woningmarkt.
             </p>
@@ -183,7 +183,7 @@ $percentage = min(100, round($aantal / $doel * 100));
     <!-- Nieuwsbrief -->
     <div class="bg-orange-50 border border-orange-200 rounded-xl p-5 mb-8">
         <h3 class="font-display font-semibold text-base mb-2">📬 Blijf op de hoogte</h3>
-        <p class="text-sm text-gedempt mb-4">Ontvang maandelijks een overzicht van het belangrijkste woningmarktnieuws in je mailbox.</p>
+        <p class="text-sm text-gedempt dark:text-gray-400 mb-4">Ontvang maandelijks een overzicht van het belangrijkste woningmarktnieuws in je mailbox.</p>
 
         <?php if ($nieuwsBriefBericht): ?>
             <div class="text-sm mb-3 <?= strpos($nieuwsBriefBericht, 'aangemeld') !== false ? 'text-green-700' : 'text-red-600' ?>">
@@ -194,7 +194,7 @@ $percentage = min(100, round($aantal / $doel * 100));
         <form method="POST" action="actie.php" class="flex flex-col sm:flex-row gap-2 max-w-md">
             <input type="hidden" name="actie" value="nieuwsbrief">
             <input type="email" name="nieuws_email" placeholder="Jouw e-mailadres" required
-                   class="w-full sm:flex-1 border border-orange-200 rounded-lg px-3 py-2 text-sm text-ink">
+                   class="w-full sm:flex-1 border border-orange-200 rounded-lg px-3 py-2 text-sm text-ink dark:text-gray-100">
             <button type="submit"
                     class="w-full sm:w-auto bg-oranje hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
                 Aanmelden
@@ -204,16 +204,16 @@ $percentage = min(100, round($aantal / $doel * 100));
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
         <a href="over-de-crisis.php" class="bg-white dark:bg-gray-800 dark:text-gray-200 border border-gray-100 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow group">
-            <h4 class="font-display font-bold text-ink group-hover:text-oranje transition-colors mb-2">🏠 Over de crisis</h4>
-            <p class="text-sm text-gedempt">Lees meer over de woningcrisis in Nederland en de belangrijkste cijfers.</p>
+            <h4 class="font-display font-bold text-ink dark:text-gray-100 group-hover:text-oranje transition-colors mb-2">🏠 Over de crisis</h4>
+            <p class="text-sm text-gedempt dark:text-gray-400">Lees meer over de woningcrisis in Nederland en de belangrijkste cijfers.</p>
         </a>
         <a href="nieuws.php" class="bg-white dark:bg-gray-800 dark:text-gray-200 border border-gray-100 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow group">
-            <h4 class="font-display font-bold text-ink group-hover:text-oranje transition-colors mb-2">📰 Laatste nieuws</h4>
-            <p class="text-sm text-gedempt">Blijf op de hoogte van de laatste ontwikkelingen op de woningmarkt.</p>
+            <h4 class="font-display font-bold text-ink dark:text-gray-100 group-hover:text-oranje transition-colors mb-2">📰 Laatste nieuws</h4>
+            <p class="text-sm text-gedempt dark:text-gray-400">Blijf op de hoogte van de laatste ontwikkelingen op de woningmarkt.</p>
         </a>
         <a href="rechten.php" class="bg-white dark:bg-gray-800 dark:text-gray-200 border border-gray-100 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow group">
-            <h4 class="font-display font-bold text-ink group-hover:text-oranje transition-colors mb-2">⚖️ Ken je rechten</h4>
-            <p class="text-sm text-gedempt">Ontdek wat jouw rechten zijn als huurder en hoe je ze kunt beschermen.</p>
+            <h4 class="font-display font-bold text-ink dark:text-gray-100 group-hover:text-oranje transition-colors mb-2">⚖️ Ken je rechten</h4>
+            <p class="text-sm text-gedempt dark:text-gray-400">Ontdek wat jouw rechten zijn als huurder en hoe je ze kunt beschermen.</p>
         </a>
     </div>
 
