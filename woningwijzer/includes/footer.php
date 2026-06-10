@@ -18,10 +18,10 @@
                 <div>
                     <h5 class="text-xs font-semibold uppercase tracking-widest text-white/90 mb-3">Tools</h5>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="woningwijzer/pages/zoeken.php"  class="hover:text-white transition-colors">Woningen zoeken</a></li>
-                        <li><a href="woningwijzer/pages/bereken.php" class="hover:text-white transition-colors">Hypotheek berekenen</a></li>
-                        <li><a href="woningwijzer/pages/bereken.php" class="hover:text-white transition-colors">Huurcheck</a></li>
-                        <li><a href="woningwijzer/pages/bereken.php" class="hover:text-white transition-colors">Huurtoeslag</a></li>
+                        <li><a href="<?= $pagesDir ?>zoeken.php"  class="hover:text-white transition-colors">Woningen zoeken</a></li>
+                        <li><a href="<?= $pagesDir ?>bereken.php" class="hover:text-white transition-colors">Hypotheek berekenen</a></li>
+                        <li><a href="<?= $pagesDir ?>bereken.php" class="hover:text-white transition-colors">Huurcheck</a></li>
+                        <li><a href="<?= $pagesDir ?>bereken.php" class="hover:text-white transition-colors">Huurtoeslag</a></li>
                     </ul>
                 </div>
 
@@ -29,10 +29,10 @@
                 <div>
                     <h5 class="text-xs font-semibold uppercase tracking-widest text-white/90 mb-3">Rechten</h5>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="woningwijzer/pages/rechten.php" class="hover:text-white transition-colors">Huurcommissie</a></li>
-                        <li><a href="woningwijzer/pages/rechten.php" class="hover:text-white transition-colors">Huurverhoging</a></li>
-                        <li><a href="woningwijzer/pages/rechten.php" class="hover:text-white transition-colors">Gebreken melden</a></li>
-                        <li><a href="woningwijzer/pages/rechten.php" class="hover:text-white transition-colors">Borg terugkrijgen</a></li>
+                        <li><a href="<?= $pagesDir ?>rechten.php" class="hover:text-white transition-colors">Huurcommissie</a></li>
+                        <li><a href="<?= $pagesDir ?>rechten.php" class="hover:text-white transition-colors">Huurverhoging</a></li>
+                        <li><a href="<?= $pagesDir ?>rechten.php" class="hover:text-white transition-colors">Gebreken melden</a></li>
+                        <li><a href="<?= $pagesDir ?>rechten.php" class="hover:text-white transition-colors">Borg terugkrijgen</a></li>
                     </ul>
                 </div>
 
@@ -40,10 +40,10 @@
                 <div>
                     <h5 class="text-xs font-semibold uppercase tracking-widest text-white/90 mb-3">Informatie</h5>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="index.php"          class="hover:text-white transition-colors">Over de crisis</a></li>
-                        <li><a href="woningwijzer/pages/nieuws.php"   class="hover:text-white transition-colors">Nieuws &amp; beleid</a></li>
-                        <li><a href="woningwijzer/pages/meldingen.php"class="hover:text-white transition-colors">Meldingen</a></li>
-                        <li><a href="woningwijzer/pages/actie.php"    class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="<?= $root ?>index.php"          class="hover:text-white transition-colors">Over de crisis</a></li>
+                        <li><a href="<?= $pagesDir ?>nieuws.php"   class="hover:text-white transition-colors">Nieuws &amp; beleid</a></li>
+                        <li><a href="<?= $pagesDir ?>meldingen.php"class="hover:text-white transition-colors">Meldingen</a></li>
+                        <li><a href="<?= $pagesDir ?>actie.php"    class="hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
 
