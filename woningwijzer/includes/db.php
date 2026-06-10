@@ -10,12 +10,29 @@
 // ======================================================================
 // Lokaal (XAMPP/WAMP):     host='127.0.0.1:3306', user='root', pass=''
 // Centrale server:         host='192.168.x.x:3306', user='...', pass='...'
+// Per-apparaat:            kopieer config.local.example.php naar
+//                          config.local.php en pas de waarden aan
+//                          (staat in .gitignore, dus per machine uniek)
 // ======================================================================
-define('DB_HOST', '127.0.0.1:3306');  // of bijv. '192.168.1.100:3306'
-define('DB_NAME', 'woningwijzer');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_CHAR', 'utf8mb4');
+$dbConfig = [
+    'host' => '127.0.0.1:3306',
+    'name' => 'woningwijzer',
+    'user' => 'root',
+    'pass' => '',
+    'char' => 'utf8mb4',
+];
+
+// Overschrijf met lokale instellingen als config.local.php bestaat
+$localConfig = __DIR__ . '/config.local.php';
+if (file_exists($localConfig)) {
+    $dbConfig = array_merge($dbConfig, require $localConfig);
+}
+
+define('DB_HOST', $dbConfig['host']);
+define('DB_NAME', $dbConfig['name']);
+define('DB_USER', $dbConfig['user']);
+define('DB_PASS', $dbConfig['pass']);
+define('DB_CHAR', $dbConfig['char']);
 
 // Probeer fallback-combinaties als DB_HOST niet werkt (handig voor XAMPP/WAMP)
 $dbHosts = array_unique([

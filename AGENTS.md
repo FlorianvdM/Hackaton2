@@ -11,7 +11,9 @@ woningwijzer/
 ├── includes/
 │   ├── db.php               # Databaseverbinding (PDO)
 │   ├── header.php           # HTML head + nav (Tailwind CDN, Leaflet)
-│   └── footer.php           # Footer met dynamische navigatiepaden
+│   ├── footer.php           # Footer met dynamische navigatiepaden
+│   ├── config.local.example.php  # Voorbeeld per-machine config
+│   └── config.local.php      # Per-machine config (gitignored!)
 ├── pages/
 │   ├── zoeken.php           # Woningen doorzoeken + Leaflet-kaart
 │   ├── bereken.php          # Rekenmodule (statisch)
@@ -34,6 +36,7 @@ woningwijzer/
 - **Auto-setup**: db.php maakt database + tabellen + voorbeelddata automatisch aan
 - **4 tabellen**: `woningen`, `meldingen`, `nieuwsbrieven`, `petities`
 - **Stijl**: prepared statements overal, `:named` parameters, `fetch()`/`fetchAll()`
+- **Per-machine config**: kopieer `config.local.example.php` naar `config.local.php` en pas aan (gitignored)
 
 ## Belangrijke conventies
 - **PHP zonder framework**, alles in losse `.php` bestanden
@@ -45,7 +48,7 @@ woningwijzer/
 ## Centrale database delen (meerdere gebruikers)
 1. Database- PC: `bind-address = 0.0.0.0` in MySQL config, firewall poort 3306 open
 2. Database- PC: gebruiker aanmaken `CREATE USER 'root'@'192.168.%' IDENTIFIED BY ''; GRANT ALL ON woningwijzer.* TO 'root'@'192.168.%';`
-3. Andere apparaten: alleen `DB_HOST` in `includes/db.php` wijzigen naar IP van database-PC
+3. Andere apparaten: kopieer `config.local.example.php` naar `config.local.php` en wijzig `host` naar IP van database-PC
 
 ## Dependencies
 - **Tailwind CSS**: CDN (`<script src="https://cdn.tailwindcss.com">`)
