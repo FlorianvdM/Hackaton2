@@ -53,8 +53,8 @@ $woningen = $stmt->fetchAll();
 
         <!-- Type -->
         <div class="flex flex-col gap-1 w-full sm:flex-1 sm:min-w-[130px]">
-            <label class="text-xs font-semibold uppercase tracking-wide text-gedempt">Type</label>
-            <select name="type" class="border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2 text-sm text-ink dark:text-gray-100">
+            <label class="text-xs font-semibold uppercase tracking-wide text-gedempt dark:text-gray-400">Type</label>
+            <select name="type" class="border border-gray-200 dark:border-gray-600 dark:bg-gray-800 rounded-lg px-3 py-2 text-sm text-ink dark:text-gray-100">
                 <option value="">Alle types</option>
                 <option value="appartement" <?= $filterType === 'appartement' ? 'selected' : '' ?>>Appartement</option>
                 <option value="woning"      <?= $filterType === 'woning' ? 'selected' : '' ?>>Eengezinswoning</option>
@@ -65,8 +65,8 @@ $woningen = $stmt->fetchAll();
 
         <!-- Stad -->
         <div class="flex flex-col gap-1 w-full sm:flex-1 sm:min-w-[130px]">
-            <label class="text-xs font-semibold uppercase tracking-wide text-gedempt">Gemeente</label>
-            <select name="stad" class="border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2 text-sm text-ink dark:text-gray-100">
+            <label class="text-xs font-semibold uppercase tracking-wide text-gedempt dark:text-gray-400">Gemeente</label>
+            <select name="stad" class="border border-gray-200 dark:border-gray-600 dark:bg-gray-800 rounded-lg px-3 py-2 text-sm text-ink dark:text-gray-100">
                 <option value="">Alle gemeenten</option>
                 <option value="amsterdam"  <?= $filterStad === 'amsterdam' ? 'selected' : '' ?>>Amsterdam</option>
                 <option value="rotterdam"  <?= $filterStad === 'rotterdam' ? 'selected' : '' ?>>Rotterdam</option>
@@ -79,8 +79,8 @@ $woningen = $stmt->fetchAll();
 
         <!-- Categorie -->
         <div class="flex flex-col gap-1 w-full sm:flex-1 sm:min-w-[130px]">
-            <label class="text-xs font-semibold uppercase tracking-wide text-gedempt">Huur / Koop</label>
-            <select name="categorie" class="border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2 text-sm text-ink dark:text-gray-100">
+            <label class="text-xs font-semibold uppercase tracking-wide text-gedempt dark:text-gray-400">Huur / Koop</label>
+            <select name="categorie" class="border border-gray-200 dark:border-gray-600 dark:bg-gray-800 rounded-lg px-3 py-2 text-sm text-ink dark:text-gray-100">
                 <option value="">Beide</option>
                 <option value="sociaal" <?= $filterCategorie === 'sociaal' ? 'selected' : '' ?>>Huur sociaal</option>
                 <option value="vrij"    <?= $filterCategorie === 'vrij' ? 'selected' : '' ?>>Huur vrij sector</option>
@@ -90,10 +90,10 @@ $woningen = $stmt->fetchAll();
 
         <!-- Budget -->
         <div class="flex flex-col gap-1 w-full sm:flex-1 sm:min-w-[130px]">
-            <label class="text-xs font-semibold uppercase tracking-wide text-gedempt">Max. budget (€)</label>
+            <label class="text-xs font-semibold uppercase tracking-wide text-gedempt dark:text-gray-400">Max. budget (€)</label>
             <input type="number" name="budget" value="<?= htmlspecialchars($filterBudget ?: '') ?>"
                    placeholder="Geen max."
-                   class="border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2 text-sm text-ink dark:text-gray-100"
+                    class="border border-gray-200 dark:border-gray-600 dark:bg-gray-800 rounded-lg px-3 py-2 text-sm text-ink dark:text-gray-100">
         </div>
 
         <div class="flex gap-2 w-full sm:w-auto">
@@ -102,7 +102,7 @@ $woningen = $stmt->fetchAll();
                 Zoeken
             </button>
             <a href="zoeken.php"
-               class="flex-1 sm:flex-none border border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 text-ink dark:text-gray-100 px-4 py-2 rounded-lg text-sm transition-colors text-center">
+               class="flex-1 sm:flex-none border border-gray-200 dark:border-gray-600 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-ink dark:text-gray-100 px-4 py-2 rounded-lg text-sm transition-colors text-center">
                 Reset
             </a>
         </div>
@@ -110,7 +110,7 @@ $woningen = $stmt->fetchAll();
 
     <!-- Resultaten -->
     <div class="flex items-center justify-between mb-4">
-        <p class="text-sm text-gedempt">
+        <p class="text-sm text-gedempt dark:text-gray-400">
             <strong class="text-ink dark:text-gray-100"><?= count($woningen) ?></strong> woningen gevonden
         </p>
 
@@ -133,7 +133,7 @@ $woningen = $stmt->fetchAll();
     </div>
 
     <?php if (empty($woningen)): ?>
-        <div class="text-center py-16 text-gedempt">
+        <div class="text-center py-16 text-gedempt dark:text-gray-400">
             <div class="text-5xl mb-4">🏚️</div>
             <p class="text-lg font-semibold text-ink dark:text-gray-100 mb-2">Geen woningen gevonden</p>
             <p class="text-sm">Pas de filters aan of verwijder het maximale budget.</p>
@@ -144,17 +144,17 @@ $woningen = $stmt->fetchAll();
             <?php foreach ($woningen as $w): ?>
                 <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-md transition-shadow">
 
-                    <div class="bg-gray-100 h-36 flex items-center justify-center text-4xl">
+                    <div class="bg-gray-100 dark:bg-gray-700 h-36 flex items-center justify-center text-4xl">
                         <?= $w['type'] === 'kamer' ? '🛏️' : ($w['type'] === 'studio' ? '🪟' : ($w['categorie'] === 'koop' ? '🏡' : '🏢')) ?>
                     </div>
 
                     <div class="p-4">
                         <?php
                         $badgeKleur = match ($w['categorie']) {
-                            'sociaal' => 'bg-green-100 text-green-800',
-                            'vrij' => 'bg-orange-100 text-orange-800',
-                            'koop' => 'bg-blue-100 text-blue-800',
-                            default => 'bg-gray-100 text-gray-600',
+                            'sociaal' => 'bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200',
+                            'vrij' => 'bg-orange-100 dark:bg-orange-900/50 text-orange-800 dark:text-orange-200',
+                            'koop' => 'bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200',
+                            default => 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300',
                         };
                         $catLabel = match ($w['categorie']) {
                             'sociaal' => 'Sociale huur',
@@ -174,12 +174,12 @@ $woningen = $stmt->fetchAll();
                             <?= htmlspecialchars($w['type']) ?> — <?= ucfirst($w['stad']) ?>
                         </h3>
 
-                        <p class="text-sm text-gedempt mb-3 leading-relaxed">
+                        <p class="text-sm text-gedempt dark:text-gray-400 mb-3 leading-relaxed">
                             <?= htmlspecialchars($w['omschrijving']) ?>
                         </p>
 
                         <div class="flex items-center justify-between text-sm">
-                            <div class="text-gedempt">
+                            <div class="text-gedempt dark:text-gray-400">
                                 🛏 <?= $w['kamers'] ?> kamer<?= $w['kamers'] > 1 ? 's' : '' ?> · 📐 <?= $w['oppervlak'] ?> m²
                             </div>
                             <div class="font-display font-bold text-oranje">
@@ -189,17 +189,17 @@ $woningen = $stmt->fetchAll();
                             </div>
                         </div>
 
-                        <div class="flex gap-2 mt-3 pt-3 border-t border-gray-100">
+                        <div class="flex gap-2 mt-3 pt-3 border-t border-gray-100 dark:border-gray-700">
                             <a href="woning-detail.php?id=<?= $w['id'] ?>"
-                               class="flex-1 text-center text-xs font-semibold py-1.5 border border-gray-200 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                               class="flex-1 text-center text-xs font-semibold py-1.5 border border-gray-200 dark:border-gray-600 dark:bg-gray-800 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
                                 Bekijken
                             </a>
                             <a href="woning-bewerken.php?id=<?= $w['id'] ?>"
-                               class="flex-1 text-center text-xs font-semibold py-1.5 border border-blue-200 text-blue-700 rounded-lg hover:bg-blue-50 transition-colors">
+                               class="flex-1 text-center text-xs font-semibold py-1.5 border border-blue-200 dark:border-blue-700 dark:bg-gray-800 text-blue-700 dark:text-blue-300 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors">
                                 Bewerken
                             </a>
                             <a href="woning-verwijderen.php?id=<?= $w['id'] ?>"
-                               class="flex-1 text-center text-xs font-semibold py-1.5 border border-red-200 text-red-600 rounded-lg hover:bg-red-50 transition-colors"
+                               class="flex-1 text-center text-xs font-semibold py-1.5 border border-red-200 dark:border-red-700 dark:bg-gray-800 text-red-600 dark:text-red-400 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/30 transition-colors"
                                onclick="return confirm('Weet je zeker dat je deze woning wilt verwijderen?')">
                                 Verwijderen
                             </a>
@@ -210,7 +210,7 @@ $woningen = $stmt->fetchAll();
         </div>
 
         <!-- Kaart-weergave -->
-        <div id="view-kaart" class="hidden rounded-xl border border-gray-100 overflow-hidden" style="height: 500px;">
+        <div id="view-kaart" class="hidden rounded-xl border border-gray-100 dark:border-gray-700 overflow-hidden" style="height: 500px;">
             <div id="kaart-container" style="height: 100%;"></div>
         </div>
     <?php endif; ?>
