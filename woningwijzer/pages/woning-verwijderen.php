@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $id > 0) {
             <div class="text-5xl mb-4">⚠️</div>
             <h1 class="font-display text-2xl font-bold mb-2">Weet je het zeker?</h1>
             <p class="text-gedempt mb-6">Je staat op het punt woning <strong>#<?= $id ?></strong> te verwijderen. Dit kan niet ongedaan worden gemaakt.</p>
-            <form method="POST" action="woning-verwijderen.php?id=<?= $id ?>" class="flex gap-3 justify-center">
+            <form method="POST" action="woning-verwijderen.php?id=<?= $id ?>" class="flex flex-col sm:flex-row gap-3 justify-center">
                 <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-colors">
                     Ja, verwijderen
                 </button>

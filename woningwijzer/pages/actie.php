@@ -187,13 +187,13 @@ $percentage = min(100, round($aantal / $doel * 100));
                 Help anderen bewust te maken van de woningcrisis. Deel deze website, deel de petitie,
                 en praat mee over de woningmarkt.
             </p>
-            <div class="flex gap-2">
+            <div class="flex flex-col sm:flex-row gap-2">
                 <button onclick="deelOpX()"
-                        class="flex-1 bg-black hover:bg-gray-800 text-white px-3 py-2 rounded-lg text-xs font-semibold transition-colors">𝕏 Deel op X</button>
+                        class="w-full sm:flex-1 bg-black hover:bg-gray-800 text-white px-3 py-2.5 rounded-lg text-xs font-semibold transition-colors">𝕏 Deel op X</button>
                 <button onclick="deelOpFacebook()"
-                        class="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg text-xs font-semibold transition-colors">📘 Deel op Facebook</button>
+                        class="w-full sm:flex-1 bg-blue-600 hover:bg-blue-700 text-white px-3 py-2.5 rounded-lg text-xs font-semibold transition-colors">📘 Deel op Facebook</button>
                 <button onclick="kopieerLink(this)"
-                        class="flex-1 bg-gray-500 hover:bg-gray-600 text-white px-3 py-2 rounded-lg text-xs font-semibold transition-colors">🔗 Kopieer link</button>
+                        class="w-full sm:flex-1 bg-gray-500 hover:bg-gray-600 text-white px-3 py-2.5 rounded-lg text-xs font-semibold transition-colors">🔗 Kopieer link</button>
             </div>
         </div>
 
@@ -210,12 +210,12 @@ $percentage = min(100, round($aantal / $doel * 100));
             </div>
         <?php endif; ?>
 
-        <form method="POST" action="actie.php" class="flex gap-2 max-w-md">
+        <form method="POST" action="actie.php" class="flex flex-col sm:flex-row gap-2 max-w-md">
             <input type="hidden" name="actie" value="nieuwsbrief">
             <input type="email" name="nieuws_email" placeholder="Jouw e-mailadres" required
-                   class="flex-1 border border-orange-200 rounded-lg px-3 py-2 text-sm text-ink">
+                   class="w-full sm:flex-1 border border-orange-200 rounded-lg px-3 py-2 text-sm text-ink">
             <button type="submit"
-                    class="bg-oranje hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                    class="w-full sm:w-auto bg-oranje hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
                 Aanmelden
             </button>
         </form>

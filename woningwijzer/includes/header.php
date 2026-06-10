@@ -49,15 +49,22 @@ $pagesDir = $inPages ? './' : 'woningwijzer/pages/';
 
 <!-- Navigatie -->
 <nav class="bg-ink sticky top-0 z-50 shadow-lg">
-    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center gap-8">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
 
         <!-- Logo -->
         <a href="<?= $root ?>index.php" class="font-display font-bold text-xl text-white flex items-center gap-2 shrink-0">
             🏠 Woning<span class="text-oranje">Wijzer</span>
         </a>
 
+        <!-- Hamburger (mobile) -->
+        <button id="menu-toggle" class="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors" aria-label="Menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+        </button>
+
         <!-- Navigatielinks -->
-        <ul class="flex items-center gap-1 ml-auto">
+        <ul id="nav-menu" class="hidden md:flex items-center gap-1">
             <?php
             $navItems = [
                 'index' => ['label' => 'Home', 'href' => $root . 'index.php'],
@@ -92,4 +99,35 @@ $pagesDir = $inPages ? './' : 'woningwijzer/pages/';
         </ul>
 
     </div>
+
+    <!-- Mobiel menu dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden bg-ink border-t border-white/10">
+        <div class="max-w-6xl mx-auto px-4 py-3 space-y-1">
+            <?php foreach ($navItems as $id => $item):
+                $actief = ($huidigePagina === $id);
+            ?>
+                <a href="<?= $item['href'] ?>"
+                   class="<?= $actief ? 'bg-oranje text-white' : 'text-white/70 hover:text-white hover:bg-white/10' ?>
+                          block px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                    <?= $item['label'] ?>
+                </a>
+            <?php endforeach; ?>
+            <a href="<?= $pagesDir ?>actie.php"
+               class="block text-center bg-oranje hover:bg-orange-700 text-white px-4 py-2 rounded-md text-sm font-semibold transition-colors mt-2">
+                Doe mee
+            </a>
+        </div>
+    </div>
 </nav>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var toggle = document.getElementById('menu-toggle');
+    var menu = document.getElementById('mobile-menu');
+    if (toggle && menu) {
+        toggle.addEventListener('click', function () {
+            menu.classList.toggle('hidden');
+        });
+    }
+});
+</script>

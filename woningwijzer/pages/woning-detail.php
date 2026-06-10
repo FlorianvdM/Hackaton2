@@ -61,7 +61,7 @@ $woning = $demoWoningen[$id] ?? null;
                 <h1 class="font-display text-2xl font-bold mb-1 capitalize"><?= $woning['type'] ?> — <?= ucfirst($woning['stad']) ?></h1>
                 <p class="text-sm text-gedempt mb-6"><?= htmlspecialchars($woning['omschrijving']) ?></p>
 
-                <div class="grid grid-cols-3 gap-4 mb-6">
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
                     <div class="bg-room rounded-xl p-4 text-center">
                         <p class="text-xs text-gedempt">Prijs</p>
                         <p class="font-display font-bold text-lg text-oranje">
@@ -86,9 +86,9 @@ $woning = $demoWoningen[$id] ?? null;
                     </div>
                 <?php endif; ?>
 
-                <div class="flex gap-3">
-                    <a href="woning-bewerken.php?id=<?= $id ?>" class="border border-blue-200 text-blue-700 hover:bg-blue-50 px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors">Bewerken</a>
-                    <a href="woning-verwijderen.php?id=<?= $id ?>" class="border border-red-200 text-red-600 hover:bg-red-50 px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors" onclick="return confirm('Weet je zeker dat je deze woning wilt verwijderen?')">Verwijderen</a>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <a href="woning-bewerken.php?id=<?= $id ?>" class="sm:flex-1 text-center border border-blue-200 text-blue-700 hover:bg-blue-50 px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors">Bewerken</a>
+                    <a href="woning-verwijderen.php?id=<?= $id ?>" class="sm:flex-1 text-center border border-red-200 text-red-600 hover:bg-red-50 px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors" onclick="return confirm('Weet je zeker dat je deze woning wilt verwijderen?')">Verwijderen</a>
                 </div>
             </div>
         </div>

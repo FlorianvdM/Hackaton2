@@ -80,10 +80,10 @@ $woningen = array_filter($alleWoningen, function ($w) use ($filterType, $filterS
 
     <!-- Filterformulier -->
     <form method="GET" action="zoeken.php"
-          class="bg-white rounded-xl border border-gray-100 p-4 mb-8 flex flex-wrap gap-3 items-end">
+          class="bg-white rounded-xl border border-gray-100 p-4 mb-8 flex flex-col sm:flex-row flex-wrap gap-3 items-end">
 
         <!-- Type -->
-        <div class="flex flex-col gap-1 flex-1 min-w-[130px]">
+        <div class="flex flex-col gap-1 w-full sm:flex-1 sm:min-w-[130px]">
             <label class="text-xs font-semibold uppercase tracking-wide text-gedempt">Type</label>
             <select name="type" class="border border-gray-200 rounded-lg px-3 py-2 text-sm text-ink">
                 <option value="">Alle types</option>
@@ -95,7 +95,7 @@ $woningen = array_filter($alleWoningen, function ($w) use ($filterType, $filterS
         </div>
 
         <!-- Stad -->
-        <div class="flex flex-col gap-1 flex-1 min-w-[130px]">
+        <div class="flex flex-col gap-1 w-full sm:flex-1 sm:min-w-[130px]">
             <label class="text-xs font-semibold uppercase tracking-wide text-gedempt">Gemeente</label>
             <select name="stad" class="border border-gray-200 rounded-lg px-3 py-2 text-sm text-ink">
                 <option value="">Alle gemeenten</option>
@@ -109,7 +109,7 @@ $woningen = array_filter($alleWoningen, function ($w) use ($filterType, $filterS
         </div>
 
         <!-- Categorie -->
-        <div class="flex flex-col gap-1 flex-1 min-w-[130px]">
+        <div class="flex flex-col gap-1 w-full sm:flex-1 sm:min-w-[130px]">
             <label class="text-xs font-semibold uppercase tracking-wide text-gedempt">Huur / Koop</label>
             <select name="categorie" class="border border-gray-200 rounded-lg px-3 py-2 text-sm text-ink">
                 <option value="">Beide</option>
@@ -120,20 +120,20 @@ $woningen = array_filter($alleWoningen, function ($w) use ($filterType, $filterS
         </div>
 
         <!-- Budget -->
-        <div class="flex flex-col gap-1 flex-1 min-w-[130px]">
+        <div class="flex flex-col gap-1 w-full sm:flex-1 sm:min-w-[130px]">
             <label class="text-xs font-semibold uppercase tracking-wide text-gedempt">Max. budget (€)</label>
             <input type="number" name="budget" value="<?= htmlspecialchars($filterBudget ?: '') ?>"
                    placeholder="Geen max."
                    class="border border-gray-200 rounded-lg px-3 py-2 text-sm text-ink">
         </div>
 
-        <div class="flex gap-2">
+        <div class="flex gap-2 w-full sm:w-auto">
             <button type="submit"
-                    class="bg-oranje hover:bg-orange-700 text-white px-5 py-2 rounded-lg text-sm font-semibold transition-colors">
+                    class="flex-1 sm:flex-none bg-oranje hover:bg-orange-700 text-white px-5 py-2 rounded-lg text-sm font-semibold transition-colors">
                 Zoeken
             </button>
             <a href="zoeken.php"
-               class="border border-gray-200 hover:bg-gray-50 text-ink px-4 py-2 rounded-lg text-sm transition-colors">
+               class="flex-1 sm:flex-none border border-gray-200 hover:bg-gray-50 text-ink px-4 py-2 rounded-lg text-sm transition-colors text-center">
                 Reset
             </a>
         </div>

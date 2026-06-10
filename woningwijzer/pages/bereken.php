@@ -17,20 +17,20 @@ require_once __DIR__ . '/../includes/header.php';
     </p>
 
     <!-- Tab navigatie -->
-    <div class="flex gap-1 border-b border-gray-200 mb-8" id="tabs">
+    <div class="flex gap-1 border-b border-gray-200 mb-8 overflow-x-auto -mx-4 px-4 scrollbar-hide" id="tabs">
         <button onclick="wisselTab('hypotheek')"
                 id="tab-hypotheek"
-                class="tab-knop actief-tab px-4 py-2.5 text-sm font-medium rounded-t-lg border-b-2 transition-colors">
+                class="tab-knop actief-tab px-4 py-2.5 text-sm font-medium rounded-t-lg border-b-2 transition-colors shrink-0">
             🏦 Hypotheek
         </button>
         <button onclick="wisselTab('huurcheck')"
                 id="tab-huurcheck"
-                class="tab-knop inactief-tab px-4 py-2.5 text-sm font-medium rounded-t-lg border-b-2 transition-colors">
+                class="tab-knop inactief-tab px-4 py-2.5 text-sm font-medium rounded-t-lg border-b-2 transition-colors shrink-0">
             🔍 Huurcheck
         </button>
         <button onclick="wisselTab('toeslag')"
                 id="tab-toeslag"
-                class="tab-knop inactief-tab px-4 py-2.5 text-sm font-medium rounded-t-lg border-b-2 transition-colors">
+                class="tab-knop inactief-tab px-4 py-2.5 text-sm font-medium rounded-t-lg border-b-2 transition-colors shrink-0">
             💰 Huurtoeslag
         </button>
     </div>

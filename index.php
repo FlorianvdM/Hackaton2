@@ -34,7 +34,7 @@ include 'woningwijzer/includes/header.php';
         </p>
 
         <!-- Statistieken tellers -->
-        <div class="flex flex-wrap justify-center gap-4 mb-12">
+        <div class="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-4 mb-12">
             <?php
             // Statistieken data — eerstejaars: lees dit later uit de database (READ)
             $statistieken = [
@@ -58,9 +58,9 @@ include 'woningwijzer/includes/header.php';
 
         <!-- Snelzoek -->
         <form action="woningwijzer/pages/zoeken.php" method="GET"
-              class="bg-white rounded-xl p-3 flex flex-wrap gap-2 max-w-2xl mx-auto">
+              class="bg-white rounded-xl p-3 flex flex-col sm:flex-row flex-wrap gap-2 max-w-2xl mx-auto">
 
-            <select name="type" class="flex-1 min-w-[120px] border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-ink">
+            <select name="type" class="w-full sm:flex-1 sm:min-w-[120px] border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-ink">
                 <option value="">Type woning</option>
                 <option value="appartement">Appartement</option>
                 <option value="woning">Eengezinswoning</option>
@@ -68,7 +68,7 @@ include 'woningwijzer/includes/header.php';
                 <option value="kamer">Kamer</option>
             </select>
 
-            <select name="stad" class="flex-1 min-w-[120px] border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-ink">
+            <select name="stad" class="w-full sm:flex-1 sm:min-w-[120px] border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-ink">
                 <option value="">Gemeente</option>
                 <option value="amsterdam">Amsterdam</option>
                 <option value="rotterdam">Rotterdam</option>
@@ -78,7 +78,7 @@ include 'woningwijzer/includes/header.php';
                 <option value="groningen">Groningen</option>
             </select>
 
-            <select name="categorie" class="flex-1 min-w-[120px] border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-ink">
+            <select name="categorie" class="w-full sm:flex-1 sm:min-w-[120px] border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-ink">
                 <option value="">Huur / Koop</option>
                 <option value="sociaal">Huur sociaal</option>
                 <option value="vrij">Huur vrij sector</option>
@@ -86,10 +86,10 @@ include 'woningwijzer/includes/header.php';
             </select>
 
             <input type="number" name="budget" placeholder="Max. budget (€)" min="0"
-                   class="flex-1 min-w-[130px] border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-ink">
+                   class="w-full sm:flex-1 sm:min-w-[130px] border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-ink">
 
             <button type="submit"
-                    class="bg-oranje hover:bg-orange-700 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors whitespace-nowrap">
+                    class="w-full sm:w-auto bg-oranje hover:bg-orange-700 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors whitespace-nowrap">
                 🔍 Zoeken
             </button>
         </form>

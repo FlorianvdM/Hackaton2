@@ -131,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <!-- Prijs + Kamers + Oppervlak (3 kolommen) -->
-        <div class="grid grid-cols-3 gap-3">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
             <div>
                 <label class="block text-xs font-semibold uppercase tracking-wide text-gedempt mb-1">Prijs (€)</label>
                 <input type="number" name="prijs" min="1"
@@ -163,13 +163,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                       required><?= htmlspecialchars($_POST['omschrijving'] ?? '') ?></textarea>
         </div>
 
-        <div class="flex gap-3 pt-2">
+        <div class="flex flex-col sm:flex-row gap-3 pt-2">
             <button type="submit"
                     class="bg-oranje hover:bg-orange-700 text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-colors">
                 Woning opslaan
             </button>
             <a href="zoeken.php"
-               class="border border-gray-200 hover:bg-gray-50 text-ink px-5 py-2.5 rounded-lg text-sm transition-colors">
+               class="border border-gray-200 hover:bg-gray-50 text-ink px-5 py-2.5 rounded-lg text-sm transition-colors text-center">
                 Annuleren
             </a>
         </div>
