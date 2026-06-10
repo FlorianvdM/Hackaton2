@@ -261,6 +261,8 @@ function initKaart() {
     var woningen = <?= json_encode(array_values($woningen), JSON_UNESCAPED_UNICODE) ?>;
 
     woningen.forEach(function (w) {
+        if (!w.lat || !w.lng) return;
+
         var prijs = w.categorie === 'koop'
             ? '€ ' + Number(w.prijs).toLocaleString('nl-NL')
             : '€ ' + w.prijs + '/mnd';
@@ -276,9 +278,11 @@ function initKaart() {
         markers.push(marker);
     });
 
-    if (woningen.length > 0) {
+    if (markers.length > 0) {
         var group = L.featureGroup(markers);
         kaart.fitBounds(group.getBounds().pad(0.1));
+    } else {
+        kaart.setView([52.1, 5.3], 8);
     }
 }
 

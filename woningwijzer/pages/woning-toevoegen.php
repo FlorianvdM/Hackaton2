@@ -21,7 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $kamers = (int) ($_POST['kamers'] ?? 0);
     $oppervlak = (int) ($_POST['oppervlak'] ?? 0);
     $omschrijving = trim($_POST['omschrijving'] ?? '');
-
+    $adres = trim($_POST['adres'] ?? '');
+ 
     // Validatie
     if (empty($type))
         $fouten[] = 'Kies een type woning.';
@@ -38,11 +39,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($omschrijving))
         $fouten[] = 'Schrijf een korte omschrijving.';
 
+    // Stad-coordinaten als fallback
+    $stadCoords = [
+        'amsterdam' => [52.3676, 4.9041],
+        'rotterdam' => [51.9244, 4.4777],
+        'utrecht' => [52.0907, 5.1214],
+        'denhaag' => [52.0705, 4.3007],
+        'eindhoven' => [51.4416, 5.4697],
+        'groningen' => [53.2194, 6.5665],
+    ];
+
     // Geo-coordinaten ophalen via PDOK Locatieserver (gratis, open data)
     $lat = null;
     $lng = null;
     if (empty($fouten)) {
-        $zoekterm = rawurlencode($omschrijving . ', ' . $stad);
+        $zoekterm = rawurlencode(trim($adres) ? "$adres, $stad, Nederland" : $stad);
         $pdokUrl = "https://geodata.nationaalgeoregister.nl/locatieserver/v3/free?q=$zoekterm&rows=1";
         $ctx = stream_context_create(['http' => ['timeout' => 3]]);
         $resp = @file_get_contents($pdokUrl, false, $ctx);
@@ -53,6 +64,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $lat = $doc['lat'] ?? null;
                 $lng = $doc['lon'] ?? null;
             }
+        }
+        // Fallback op stad-centrum als PDOK niets vond
+        if (!$lat || !$lng) {
+            $lat = $stadCoords[$stad][0] ?? null;
+            $lng = $stadCoords[$stad][1] ?? null;
         }
     }
 
@@ -75,6 +91,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':lng'          => $lng,
         ]);
 
+        // Redirect naar de kaart op zoeken.php
+        if ($lat && $lng) {
+            header("Location: zoeken.php?kaart=1");
+            exit;
+        }
         $succes = true;
     }
 }
@@ -174,6 +195,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                        placeholder="bijv. 65"
                        class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-ink" required>
             </div>
+        </div>
+
+        <!-- Adres -->
+        <div>
+            <label class="block text-xs font-semibold uppercase tracking-wide text-gedempt mb-1">Adres <span class="text-gedempt/60 font-normal">(optioneel — voor de kaart)</span></label>
+            <input type="text" name="adres" value="<?= htmlspecialchars($_POST['adres'] ?? '') ?>"
+                   placeholder="bijv. Rozengracht 123"
+                   class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-ink">
         </div>
 
         <!-- Omschrijving -->
