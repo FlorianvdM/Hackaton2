@@ -17,22 +17,25 @@ require_once __DIR__ . '/../includes/header.php';
     </p>
 
     <!-- Tab navigatie -->
-    <div class="flex gap-1 border-b border-gray-200 dark:border-gray-700 mb-8 overflow-x-auto -mx-4 px-4 scrollbar-hide" id="tabs">
-        <button onclick="wisselTab('hypotheek')"
-                id="tab-hypotheek"
-                class="tab-knop actief-tab px-4 py-2.5 text-sm font-medium rounded-t-lg border-b-2 transition-colors shrink-0 dark:text-gray-100">
-            🏦 Hypotheek
-        </button>
-        <button onclick="wisselTab('huurcheck')"
-                id="tab-huurcheck"
-                class="tab-knop inactief-tab px-4 py-2.5 text-sm font-medium rounded-t-lg border-b-2 transition-colors shrink-0">
-            🔍 Huurcheck
-        </button>
-        <button onclick="wisselTab('toeslag')"
-                id="tab-toeslag"
-                class="tab-knop inactief-tab px-4 py-2.5 text-sm font-medium rounded-t-lg border-b-2 transition-colors shrink-0">
-            💰 Huurtoeslag
-        </button>
+    <div class="relative mb-8">
+        <div class="flex gap-1 overflow-x-auto -mx-4 px-4 scrollbar-hide" id="tabs">
+            <button onclick="wisselTab('hypotheek')"
+                    id="tab-hypotheek"
+                    class="px-5 py-3 text-sm font-semibold rounded-t-lg transition-colors shrink-0 dark:text-gray-100 bg-white dark:bg-gray-800 text-ink border border-gray-200 dark:border-gray-700 border-b-0">
+                🏦 Hypotheek
+            </button>
+            <button onclick="wisselTab('huurcheck')"
+                    id="tab-huurcheck"
+                    class="px-5 py-3 text-sm font-medium rounded-t-lg transition-colors shrink-0 text-gedempt dark:text-gray-400 bg-gray-100 dark:bg-gray-800/30 border border-transparent border-b-0">
+                🔍 Huurcheck
+            </button>
+            <button onclick="wisselTab('toeslag')"
+                    id="tab-toeslag"
+                    class="px-5 py-3 text-sm font-medium rounded-t-lg transition-colors shrink-0 text-gedempt dark:text-gray-400 bg-gray-100 dark:bg-gray-800/30 border border-transparent border-b-0">
+                💰 Huurtoeslag
+            </button>
+        </div>
+        <div class="border-b border-gray-200 dark:border-gray-700 -mt-px"></div>
     </div>
 
     <!-- ======== TAB 1: Hypotheek ======== -->
@@ -216,13 +219,13 @@ function wisselTab(naam) {
     ['hypotheek','huurcheck','toeslag'].forEach(t => {
         document.getElementById('paneel-' + t).classList.add('hidden');
         const btn = document.getElementById('tab-' + t);
-        btn.classList.remove('border-oranje', 'text-ink', 'border-b-2');
-        btn.classList.add('text-gedempt dark:text-gray-400', 'border-transparent');
+        btn.classList.remove('bg-white', 'dark:bg-gray-800', 'text-ink', 'dark:text-gray-100', 'border-gray-200', 'dark:border-gray-700', 'font-semibold');
+        btn.classList.add('bg-gray-100', 'dark:bg-gray-800/30', 'text-gedempt', 'dark:text-gray-400', 'border', 'border-transparent', 'border-b-0', 'font-medium');
     });
     document.getElementById('paneel-' + naam).classList.remove('hidden');
     const actief = document.getElementById('tab-' + naam);
-    actief.classList.remove('text-gedempt dark:text-gray-400', 'border-transparent');
-    actief.classList.add('border-b-2', 'border-oranje', 'text-ink', 'dark:text-gray-100');
+    actief.classList.remove('bg-gray-100', 'dark:bg-gray-800/30', 'text-gedempt', 'dark:text-gray-400', 'border-transparent', 'font-medium');
+    actief.classList.add('bg-white', 'dark:bg-gray-800', 'text-ink', 'dark:text-gray-100', 'border', 'border-gray-200', 'dark:border-gray-700', 'border-b-0', 'font-semibold');
 }
 wisselTab('hypotheek');
 
