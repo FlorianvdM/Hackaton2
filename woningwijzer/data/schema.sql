@@ -1,8 +1,9 @@
 -- ============================================================
 -- Database schema voor WoningWijzer
 -- ============================================================
--- Dit script maakt de database en alle tabellen aan.
--- Uitvoeren via: mysql -u root < woningwijzer/data/schema.sql
+-- De database wordt automatisch aangemaakt via includes/db.php.
+-- Dit script is alleen nodig voor een handmatige reset:
+--   mysql -u root < woningwijzer/data/schema.sql
 -- ============================================================
 
 CREATE DATABASE IF NOT EXISTS woningwijzer
