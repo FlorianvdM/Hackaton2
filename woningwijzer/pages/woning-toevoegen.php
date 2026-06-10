@@ -4,16 +4,22 @@
 // Eerstejaars: HTML form, PHP POST verwerking, MySQL INSERT
 // ============================================================
 
-$paginaTitel = 'Woning toevoegen';
-require_once __DIR__ . '/../includes/header.php';
 require_once __DIR__ . '/../includes/db.php';
 
-$succes = false;
 $fouten = [];
 
-// Formulierverwerking bij POST
+// Stad-coordinaten als fallback
+$stadCoords = [
+    'amsterdam' => [52.3676, 4.9041],
+    'rotterdam' => [51.9244, 4.4777],
+    'utrecht' => [52.0907, 5.1214],
+    'denhaag' => [52.0705, 4.3007],
+    'eindhoven' => [51.4416, 5.4697],
+    'groningen' => [53.2194, 6.5665],
+];
+
+// Formulierverwerking bij POST (vóór enige HTML-output, zodat header() redirect werkt)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Invoer ophalen en opschonen
     $type = trim($_POST['type'] ?? '');
     $stad = trim($_POST['stad'] ?? '');
     $categorie = trim($_POST['categorie'] ?? '');
@@ -22,34 +28,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $oppervlak = (int) ($_POST['oppervlak'] ?? 0);
     $omschrijving = trim($_POST['omschrijving'] ?? '');
     $adres = trim($_POST['adres'] ?? '');
- 
-    // Validatie
-    if (empty($type))
-        $fouten[] = 'Kies een type woning.';
-    if (empty($stad))
-        $fouten[] = 'Kies een gemeente.';
-    if (empty($categorie))
-        $fouten[] = 'Kies huur of koop.';
-    if ($prijs <= 0)
-        $fouten[] = 'Vul een geldige prijs in.';
-    if ($kamers <= 0)
-        $fouten[] = 'Vul het aantal kamers in.';
-    if ($oppervlak <= 0)
-        $fouten[] = 'Vul de oppervlakte in.';
-    if (empty($omschrijving))
-        $fouten[] = 'Schrijf een korte omschrijving.';
 
-    // Stad-coordinaten als fallback
-    $stadCoords = [
-        'amsterdam' => [52.3676, 4.9041],
-        'rotterdam' => [51.9244, 4.4777],
-        'utrecht' => [52.0907, 5.1214],
-        'denhaag' => [52.0705, 4.3007],
-        'eindhoven' => [51.4416, 5.4697],
-        'groningen' => [53.2194, 6.5665],
-    ];
+    if (empty($type)) $fouten[] = 'Kies een type woning.';
+    if (empty($stad)) $fouten[] = 'Kies een gemeente.';
+    if (empty($categorie)) $fouten[] = 'Kies huur of koop.';
+    if ($prijs <= 0) $fouten[] = 'Vul een geldige prijs in.';
+    if ($kamers <= 0) $fouten[] = 'Vul het aantal kamers in.';
+    if ($oppervlak <= 0) $fouten[] = 'Vul de oppervlakte in.';
+    if (empty($omschrijving)) $fouten[] = 'Schrijf een korte omschrijving.';
 
-    // Geo-coordinaten ophalen via PDOK Locatieserver (gratis, open data)
     $lat = null;
     $lng = null;
     if (empty($fouten)) {
@@ -65,15 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $lng = $doc['lon'] ?? null;
             }
         }
-        // Fallback op stad-centrum als PDOK niets vond
         if (!$lat || !$lng) {
             $lat = $stadCoords[$stad][0] ?? null;
             $lng = $stadCoords[$stad][1] ?? null;
         }
-    }
 
-    // Opslaan als geen fouten (CREATE — INSERT in database)
-    if (empty($fouten)) {
         $db = getDb();
         $stmt = $db->prepare("
             INSERT INTO woningen (type, stad, categorie, prijs, kamers, oppervlak, omschrijving, lat, lng, aangemaakt_op)
@@ -91,14 +74,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':lng'          => $lng,
         ]);
 
-        // Redirect naar de kaart op zoeken.php
-        if ($lat && $lng) {
-            header("Location: zoeken.php?kaart=1");
-            exit;
-        }
-        $succes = true;
+        header("Location: zoeken.php?kaart=1");
+        exit;
     }
 }
+
+$paginaTitel = 'Woning toevoegen';
+require_once __DIR__ . '/../includes/header.php';
 ?>
 
 <div class="max-w-2xl mx-auto px-4 py-10">
@@ -109,18 +91,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <p class="text-xs font-semibold uppercase tracking-widest text-oranje mb-1">CRUD — Create</p>
     <h1 class="font-display text-3xl font-bold mb-6">Woning toevoegen</h1>
-
-    <?php if ($succes): ?>
-        <div class="bg-green-50 border border-green-200 text-green-800 rounded-xl p-4 mb-6 space-y-1">
-            <div class="flex items-center gap-3">
-                ✅ <span class="font-semibold">Woning succesvol toegevoegd!</span>
-                <a href="zoeken.php" class="ml-auto text-sm underline">Bekijk overzicht</a>
-            </div>
-            <?php if ($lat && $lng): ?>
-                <p class="text-xs text-green-600 ml-7">📍 Locatie bepaald via <strong>PDOK Locatieserver</strong> (lat: <?= $lat ?>, lng: <?= $lng ?>)</p>
-            <?php endif; ?>
-        </div>
-    <?php endif; ?>
 
     <?php if (!empty($fouten)): ?>
         <div class="bg-red-50 border border-red-200 text-red-800 rounded-xl p-4 mb-6">
