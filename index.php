@@ -44,7 +44,7 @@ include 'woningwijzer/includes/header.php';
     <!-- Decoratieve achtergrond-glow -->
     <div class="absolute top-0 right-0 w-96 h-96 bg-oranje/10 rounded-full blur-3xl pointer-events-none"></div>
 
-    <div class="max-w-4xl mx-auto text-center relative z-10">
+    <div class="max-w-4xl mx-auto text-center relative z-10" data-reveal>
 
         <span class="inline-block bg-oranje/20 text-oranje text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded mb-6">
             Woningcrisis in Nederland
@@ -147,9 +147,8 @@ include 'woningwijzer/includes/header.php';
                 ['getal' => '52%', 'label' => 'Starters buiten de boot', 'kleur' => 'text-oranje'],
                 ['getal' => '100.000', 'label' => 'Nieuwbouw gepland/jaar', 'kleur' => 'text-green-600'],
             ];
-            foreach ($stats as $s):
-                ?>
-                <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+            $i = 0; foreach ($stats as $s): $i++; ?>
+                <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl p-4 border border-gray-100 dark:border-gray-700" data-reveal data-reveal-delay="<?= $i ?>">
                     <div class="font-display text-2xl font-bold <?= $s['kleur'] ?> mb-1 leading-none">
                         <?= htmlspecialchars($s['getal']) ?>
                     </div>

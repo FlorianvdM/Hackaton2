@@ -49,7 +49,8 @@ $woningen = $stmt->fetchAll();
 
     <!-- Filterformulier -->
     <form method="GET" action="zoeken.php"
-          class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-4 mb-8 flex flex-col sm:flex-row flex-wrap gap-3 items-end">
+          class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-4 mb-8 flex flex-col sm:flex-row flex-wrap gap-3 items-end"
+          data-reveal>
 
         <!-- Type -->
         <div class="flex flex-col gap-1 w-full sm:flex-1 sm:min-w-[130px]">
@@ -140,7 +141,7 @@ $woningen = $stmt->fetchAll();
         </div>
     <?php else: ?>
         <!-- Grid-weergave -->
-        <div id="view-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div id="view-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 animate-stagger">
             <?php foreach ($woningen as $w): ?>
                 <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-md transition-shadow">
 

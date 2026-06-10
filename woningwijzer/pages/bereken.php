@@ -39,7 +39,7 @@ require_once __DIR__ . '/../includes/header.php';
     </div>
 
     <!-- ======== TAB 1: Hypotheek ======== -->
-    <div id="paneel-hypotheek" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div id="paneel-hypotheek" class="grid grid-cols-1 md:grid-cols-2 gap-6" data-reveal>
         <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-6">
             <h2 class="font-display font-semibold text-lg mb-4">Maximale hypotheek berekenen</h2>
 
@@ -79,7 +79,7 @@ require_once __DIR__ . '/../includes/header.php';
             </div>
         </div>
 
-        <div class="space-y-3">
+        <div class="space-y-3" data-reveal>
             <h3 class="font-display font-semibold text-base">Handige aandachtspunten</h3>
             <?php
             $tips = [

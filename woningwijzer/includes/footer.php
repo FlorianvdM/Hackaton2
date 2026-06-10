@@ -56,5 +56,66 @@
         </div>
     </footer>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    // Scroll-reveal: elementen met data-reveal worden zichtbaar bij scrollen
+    var revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('[data-reveal]').forEach(function (el) {
+        revealObserver.observe(el);
+    });
+
+    // Stagger: kinderen van .animate-stagger worden een voor een zichtbaar
+    var staggerObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('staggered');
+                staggerObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate-stagger').forEach(function (el) {
+        staggerObserver.observe(el);
+    });
+
+    // Counter: tel op van 0 naar data-counter-waarde
+    var counterObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                var el = entry.target;
+                var doel = parseFloat(el.getAttribute('data-counter-waarde')) || 0;
+                var prefix = el.getAttribute('data-counter-prefix') || '';
+                var suffix = el.getAttribute('data-counter-suffix') || '';
+                var dur = parseInt(el.getAttribute('data-counter-duur')) || 1500;
+                var stap = Math.max(1, Math.floor(doel / 60));
+                var huidig = 0;
+                var interval = setInterval(function () {
+                    huidig += stap;
+                    if (huidig >= doel) {
+                        huidig = doel;
+                        clearInterval(interval);
+                    }
+                    el.textContent = prefix + huidig.toLocaleString('nl-NL') + suffix;
+                }, dur / 60);
+                counterObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('[data-counter-waarde]').forEach(function (el) {
+        counterObserver.observe(el);
+    });
+});
+</script>
+
 </body>
 </html>

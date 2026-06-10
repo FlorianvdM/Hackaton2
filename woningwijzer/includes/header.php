@@ -39,11 +39,80 @@ $pagesDir = $inPages ? './' : 'woningwijzer/pages/';
                     fontFamily: {
                         sans:    ['Inter', 'sans-serif'],
                         display: ['"Space Grotesk"', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in':     'fadeIn 0.6s ease-out forwards',
+                        'fade-in-up':  'fadeInUp 0.6s ease-out forwards',
+                        'slide-down':  'slideDown 0.3s ease-out forwards',
+                        'scale-in':    'scaleIn 0.3s ease-out forwards',
+                        'pulse-soft':  'pulseSoft 2s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%':   { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%':   { opacity: '0', transform: 'translateY(24px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideDown: {
+                            '0%':   { opacity: '0', transform: 'translateY(-8px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        scaleIn: {
+                            '0%':   { opacity: '0', transform: 'scale(0.95)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        pulseSoft: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%':      { opacity: '0.6' },
+                        },
                     }
                 }
             }
         }
     </script>
+
+    <style>
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        [data-reveal].revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        [data-reveal-delay="1"] { transition-delay: 0.1s; }
+        [data-reveal-delay="2"] { transition-delay: 0.2s; }
+        [data-reveal-delay="3"] { transition-delay: 0.3s; }
+        [data-reveal-delay="4"] { transition-delay: 0.4s; }
+        [data-reveal-delay="5"] { transition-delay: 0.5s; }
+        [data-reveal-delay="6"] { transition-delay: 0.6s; }
+        [data-reveal-delay="7"] { transition-delay: 0.7s; }
+        [data-reveal-delay="8"] { transition-delay: 0.8s; }
+
+        .animate-stagger > * {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .animate-stagger.staggered > *:nth-child(1) { transition-delay: 0.05s; }
+        .animate-stagger.staggered > *:nth-child(2) { transition-delay: 0.1s; }
+        .animate-stagger.staggered > *:nth-child(3) { transition-delay: 0.15s; }
+        .animate-stagger.staggered > *:nth-child(4) { transition-delay: 0.2s; }
+        .animate-stagger.staggered > *:nth-child(5) { transition-delay: 0.25s; }
+        .animate-stagger.staggered > *:nth-child(6) { transition-delay: 0.3s; }
+        .animate-stagger.staggered > *:nth-child(7) { transition-delay: 0.35s; }
+        .animate-stagger.staggered > *:nth-child(8) { transition-delay: 0.4s; }
+        .animate-stagger.staggered > *:nth-child(9) { transition-delay: 0.45s; }
+        .animate-stagger.staggered > *:nth-child(10) { transition-delay: 0.5s; }
+        .animate-stagger.staggered > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 
     <!-- Pagina-specifieke CSS -->
     <?php if (!empty($paginaCss)): ?>

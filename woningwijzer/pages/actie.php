@@ -85,8 +85,11 @@ $percentage = min(100, round($aantal / $doel * 100));
                 strengere regulering van de vrije sector en bescherming van huurders.
             </p>
             <div class="bg-oranje/5 rounded-xl p-4 mb-4 text-center">
-                <span class="font-display text-4xl font-bold text-oranje" id="aantal-handtekeningen">
-                    <?= number_format($aantal, 0, ',', '.') ?>
+                <span class="font-display text-4xl font-bold text-oranje" id="aantal-handtekeningen"
+                      data-counter-waarde="<?= $aantal ?>"
+                      data-counter-duur="2000"
+                      data-counter-prefix=""
+                      data-counter-suffix="">0
                 </span>
                 <p class="text-xs text-gedempt dark:text-gray-400">handtekeningen van de <?= number_format($doel, 0, ',', '.') ?> benodigd</p>
                 <div class="bg-gray-200 rounded-full h-2 mt-2">

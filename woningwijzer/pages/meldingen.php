@@ -55,17 +55,17 @@ require_once __DIR__ . '/../includes/header.php';
     <?php endif; ?>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-5 text-center">
+        <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-5 text-center" data-reveal data-reveal-delay="1">
             <div class="text-3xl mb-2">📋</div>
             <p class="font-display font-bold text-2xl text-oranje"><?= count($meldingen) ?></p>
             <p class="text-xs text-gedempt">Totaal meldingen</p>
         </div>
-        <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-5 text-center">
+        <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-5 text-center" data-reveal data-reveal-delay="2">
             <div class="text-3xl mb-2">🔄</div>
             <p class="font-display font-bold text-2xl text-oranje"><?= count(array_filter($meldingen, fn($m) => $m['status'] === 'In behandeling' || $m['status'] === 'Gemeld bij Huurcommissie')) ?></p>
             <p class="text-xs text-gedempt">In behandeling</p>
         </div>
-        <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-5 text-center">
+        <div class="bg-white dark:bg-gray-800 dark:text-gray-200 rounded-xl border border-gray-100 dark:border-gray-700 p-5 text-center" data-reveal data-reveal-delay="3">
             <div class="text-3xl mb-2">✅</div>
             <p class="font-display font-bold text-2xl text-green-600"><?= count(array_filter($meldingen, fn($m) => $m['status'] === 'Afgehandeld')) ?></p>
             <p class="text-xs text-gedempt">Afgehandeld</p>
